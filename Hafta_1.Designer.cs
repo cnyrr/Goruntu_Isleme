@@ -1,6 +1,6 @@
 ﻿namespace Görüntü_İşleme
 {
-    partial class AnaEkran
+    partial class Hafta_1
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnaEkran));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Hafta_1));
             menuStrip1 = new MenuStrip();
             dosyaToolStripMenuItem = new ToolStripMenuItem();
             ResimSecToolbar = new ToolStripMenuItem();
@@ -457,7 +457,7 @@
             SigdirButonu.UseVisualStyleBackColor = true;
             SigdirButonu.CheckedChanged += radioButton3_CheckedChanged;
             // 
-            // AnaEkran
+            // Hafta_1
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
@@ -472,7 +472,7 @@
             Controls.Add(IslemlerGrupKutusu);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MainMenuStrip = menuStrip1;
-            Name = "AnaEkran";
+            Name = "Hafta_1";
             ShowIcon = false;
             Text = "Resim Düzenleme Uygulaması";
             Load += Form1_Load;

@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace Görüntü_İşleme
 {
-    public partial class AnaEkran : Form
+    public partial class Hafta_1 : Form
     {
-        public AnaEkran()
+        public Hafta_1()
         {
             InitializeComponent();
         }
@@ -136,14 +136,14 @@ namespace Görüntü_İşleme
 
                     aktifEt();
                     ResmiKaydetButonu.Enabled = false;
-
-                    DegistirilmisResim.Image ??= OrjinalResim.Image;
                 }
 
                 test.Dispose();
             }
 
             DosyaAcici.Dispose();
+
+            return;
         }
 
         private void resmiKaydet()
@@ -247,7 +247,7 @@ namespace Görüntü_İşleme
             {
                 for (int x = 0; x < daire_cozunurluk; x++)
                 {
-                    if (Math.Pow(Math.Abs(x - (double)daire_cozunurluk/ 2), 2) + Math.Pow(Math.Abs(y - (double)daire_cozunurluk / 2), 2) < 10000)
+                    if (Math.Pow(Math.Abs(x - (double)daire_cozunurluk / 2), 2) + Math.Pow(Math.Abs(y - (double)daire_cozunurluk / 2), 2) < 10000)
                     {
                         daire.SetPixel(x, y, Color.FromArgb(255, 255, 255));
                     }
@@ -298,6 +298,7 @@ namespace Görüntü_İşleme
 
             DegistirilmisResim.Image = null;
             DegistirilmisResim.Image = orneklenmis_gorsel;
+            orneklenecek_gorsel.Dispose();
             aktifEt();
             return;
         }
@@ -389,6 +390,7 @@ namespace Görüntü_İşleme
                 }
             }
 
+            goruntuDegistir();
             DegistirilmisResim.Image = null;
             DegistirilmisResim.Image = DuzenlenecekResim;
             aktifEt();
@@ -508,7 +510,7 @@ namespace Görüntü_İşleme
                 {
                     yeni_renk = DuzenlenecekResim.GetPixel(x, y);
 
-                    gri_ton = (yeni_renk.R + yeni_renk.G + yeni_renk.B) / (double) 3;
+                    gri_ton = (yeni_renk.R + yeni_renk.G + yeni_renk.B) / (double)3;
 
                     yeni_renk = Color.FromArgb((int)gri_ton, (int)gri_ton, (int)gri_ton);
 
