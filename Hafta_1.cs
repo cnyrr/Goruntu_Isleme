@@ -68,7 +68,7 @@ namespace Görüntü_İşleme
             MozaiklemeListesi.Enabled = true;
         }
 
-        private void resimDegistir(ref Image eski_resim, ref Image yeni_resim)
+        private void resimDegistir(Image eski_resim, Image yeni_resim)
         {
             Image gecici_resim = eski_resim;
             eski_resim = yeni_resim;
@@ -239,8 +239,7 @@ namespace Görüntü_İşleme
                 gri_tonu = Color.FromArgb((int)gri_degeri, (int)gri_degeri, (int)gri_degeri);
             }
 
-            resimDegistir(OrjinalResim.Image, )
-            OrjinalResim.Image = gri_skala;
+            resimDegistir(OrjinalResim.Image, gri_skala);
 
             aktifEt();
             ResmiKaydetButonu.Enabled = false;
