@@ -1,5 +1,8 @@
 using System.DirectoryServices;
 using System.Windows.Forms;
+using System.Xml.Serialization;
+
+
 
 namespace Görüntü_İşleme
 {
@@ -42,40 +45,35 @@ namespace Görüntü_İşleme
             BGR = 4
         }
 
-        private void aktifEt()
+        private void ButonlariAktifEt()
         {
-            NegatifAlmaButonu.Enabled = true;
-
-            ResmiKaydetButonu.Enabled = true;
-
-            OrneklemeButonu.Enabled = true;
-            OrneklemeListesi.Enabled = true;
-
-            RenkCevirButonu.Enabled = true;
-            RenkOrneklemeListesi.Enabled = true;
-            RenkveGriCevirListesi.Enabled = true;
-
-            BantDegisimButonu.Enabled = true;
-            BantDegisimListesi.Enabled = true;
-
-            GriRenkDerinligiButonu.Enabled = true;
-            GriRenkDerinligiListesi.Enabled = true;
-
-            NormalRenkDerinligiDegistirButonu.Enabled = true;
-            NormalRenkDerinligiListesi.Enabled = true;
-
-            MozaiklestirmeButonu.Enabled = true;
-            MozaiklemeListesi.Enabled = true;
-        }
-
-        private void resimDegistir(Image Degisecek_Resim, Bitmap Yeni_Resim)
-        {
-            Image Gecici_resim = Degisecek_Resim;
-            Degisecek_Resim = Yeni_Resim;
-
-            if (Gecici_resim != null)
+            if (Orjinal.Image != null)
             {
-                Gecici_resim.Dispose();
+                NegatifAlmaButonu.Enabled = true;
+
+                OrneklemeButonu.Enabled = true;
+                OrneklemeListesi.Enabled = true;
+
+                RenkCevirButonu.Enabled = true;
+                RenkOrneklemeListesi.Enabled = true;
+                RenkveGriCevirListesi.Enabled = true;
+
+                BantDegisimButonu.Enabled = true;
+                BantDegisimListesi.Enabled = true;
+
+                GriRenkDerinligiButonu.Enabled = true;
+                GriRenkDerinligiListesi.Enabled = true;
+
+                NormalRenkDerinligiDegistirButonu.Enabled = true;
+                NormalRenkDerinligiListesi.Enabled = true;
+
+                MozaiklestirmeButonu.Enabled = true;
+                MozaiklemeListesi.Enabled = true;
+            }
+
+            if (Degistirilmis.Image != null)
+            {
+                ResmiKaydetButonu.Enabled = true;
             }
 
             return;
@@ -128,155 +126,6 @@ namespace Görüntü_İşleme
 
             return deger;
         }
-        private void resimAc()
-        {
-            OpenFileDialog DosyaAcici = new()
-            {
-                DefaultExt = ".jpg",
-                Filter = "Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*"
-            };
-
-            DosyaAcici.ShowDialog();
-
-            if (DosyaAcici.FileName != "")
-            {
-                Image test = Image.FromFile(DosyaAcici.FileName);
-
-                if (test.Width > 0 && test.Height > 0)
-                {
-                    Orjinal.Image = Image.FromFile(DosyaAcici.FileName);
-
-
-                    aktifEt();
-                    ResmiKaydetButonu.Enabled = false;
-                }
-
-                test.Dispose();
-            }
-
-            DosyaAcici.Dispose();
-
-            return;
-        }
-
-        private void resmiKaydet()
-        {
-            SaveFileDialog DosyaKaydedici = new()
-            {
-                Filter = "Jpeg Resmi|*.jpg|Bitmap Resmi|*.bmp|Gif Resmi|*.gif",
-                Title = "Resmi Kaydet"
-            };
-
-            DosyaKaydedici.ShowDialog();
-
-            if (DosyaKaydedici.FileName != "")
-            {
-                FileStream DosyaAkisi = (FileStream)DosyaKaydedici.OpenFile();
-                switch (DosyaKaydedici.FilterIndex)
-                {
-                    case 1:
-                        DegistirilmisResim.Image.Save(DosyaAkisi, System.Drawing.Imaging.ImageFormat.Jpeg); break;
-                    case 2:
-                        DegistirilmisResim.Image.Save(DosyaAkisi, System.Drawing.Imaging.ImageFormat.Bmp); break;
-                    case 3:
-                        DegistirilmisResim.Image.Save(DosyaAkisi, System.Drawing.Imaging.ImageFormat.Gif); break;
-                }
-                DosyaAkisi.Close();
-            }
-
-            DosyaKaydedici.Dispose();
-        }
-
-        private void resminNegatifiniAlOnceki()
-        {
-            Bitmap DuzenlenecekResim = new(Orjinal.Image);
-
-            int yukseklik = Orjinal.Image.Height;
-            int genislik = Orjinal.Image.Width;
-
-            Color yeni_renk;
-            int R, G, B;
-
-            for (int y = 0; y < yukseklik; y++)
-            {
-                for (int x = 0; x < genislik; x++)
-                {
-                    yeni_renk = DuzenlenecekResim.GetPixel(x, y);
-
-                    R = (byte)~yeni_renk.R;
-                    G = (byte)~yeni_renk.G;
-                    B = (byte)~yeni_renk.B;
-
-                    yeni_renk = Color.FromArgb(R, G, B);
-
-                    DuzenlenecekResim.SetPixel(x, y, yeni_renk);
-                }
-            }
-
-            DegistirilmisResim.Image = null;
-            DegistirilmisResim.Image = DuzenlenecekResim;
-            aktifEt();
-            return;
-        }
-
-        private void griSkalaOlustur()
-        {
-            int skala_boyutu = (int)GriSkalaMaxDegerKutusu.Value;
-
-            Bitmap gri_skala = new(skala_boyutu, skala_boyutu);
-            Color gri_tonu = Color.FromArgb(0, 0, 0);
-
-            double artis_miktari = 255 / (double)skala_boyutu;
-            double gri_degeri = 0;
-
-            for (int x = 0; x < skala_boyutu; x++)
-            {
-                for (int y = 0; y < skala_boyutu; y++)
-                {
-                    gri_skala.SetPixel(x, y, gri_tonu);
-                }
-
-                if (gri_degeri < 255)
-                {
-                    gri_degeri += artis_miktari;
-                }
-
-                gri_tonu = Color.FromArgb((int)gri_degeri, (int)gri_degeri, (int)gri_degeri);
-            }
-
-            resimDegistir(Orjinal.Image, gri_skala);
-
-            aktifEt();
-            ResmiKaydetButonu.Enabled = false;
-            return;
-        }
-
-        private void daireOlustur()
-        {
-            int daire_cozunurluk = (int)DaireCozunurlukDegerKutusu.Value;
-            Bitmap daire = new(daire_cozunurluk, daire_cozunurluk);
-
-            for (int y = 0; y < daire_cozunurluk; y++)
-            {
-                for (int x = 0; x < daire_cozunurluk; x++)
-                {
-                    if (Math.Pow(Math.Abs(x - (double)daire_cozunurluk / 2), 2) + Math.Pow(Math.Abs(y - (double)daire_cozunurluk / 2), 2) < 10000)
-                    {
-                        daire.SetPixel(x, y, Color.FromArgb(255, 255, 255));
-                    }
-                    else
-                    {
-                        daire.SetPixel(x, y, Color.FromArgb(0, 0, 0));
-                    }
-                }
-            }
-
-            Orjinal.Image = daire;
-
-            aktifEt();
-            ResmiKaydetButonu.Enabled = false;
-            return;
-        }
 
         private void resmiOrnekle()
         {
@@ -309,10 +158,10 @@ namespace Görüntü_İşleme
                 }
             }
 
-            DegistirilmisResim.Image = null;
-            DegistirilmisResim.Image = orneklenmis_gorsel;
+            Degistirilmis.Image = null;
+            Degistirilmis.Image = orneklenmis_gorsel;
             orneklenecek_gorsel.Dispose();
-            aktifEt();
+            ButonlariAktifEt();
             return;
         }
 
@@ -360,9 +209,9 @@ namespace Görüntü_İşleme
                 }
             }
 
-            DegistirilmisResim.Image = null;
-            DegistirilmisResim.Image = DuzenlenecekResim;
-            aktifEt();
+            Degistirilmis.Image = null;
+            Degistirilmis.Image = DuzenlenecekResim;
+            ButonlariAktifEt();
             return;
         }
 
@@ -404,9 +253,9 @@ namespace Görüntü_İşleme
             }
 
             //goruntuDegistir();
-            DegistirilmisResim.Image = null;
-            DegistirilmisResim.Image = DuzenlenecekResim;
-            aktifEt();
+            Degistirilmis.Image = null;
+            Degistirilmis.Image = DuzenlenecekResim;
+            ButonlariAktifEt();
             return;
         }
 
@@ -436,9 +285,9 @@ namespace Görüntü_İşleme
                 }
             }
 
-            DegistirilmisResim.Image = null;
-            DegistirilmisResim.Image = DuzenlenecekResim;
-            aktifEt();
+            Degistirilmis.Image = null;
+            Degistirilmis.Image = DuzenlenecekResim;
+            ButonlariAktifEt();
             return;
         }
 
@@ -467,9 +316,9 @@ namespace Görüntü_İşleme
                 }
             }
 
-            DegistirilmisResim.Image = null;
-            DegistirilmisResim.Image = DuzenlenecekResim;
-            aktifEt();
+            Degistirilmis.Image = null;
+            Degistirilmis.Image = DuzenlenecekResim;
+            ButonlariAktifEt();
             return;
         }
 
@@ -502,9 +351,9 @@ namespace Görüntü_İşleme
                 }
             }
 
-            DegistirilmisResim.Image = null;
-            DegistirilmisResim.Image = cikti;
-            aktifEt();
+            Degistirilmis.Image = null;
+            Degistirilmis.Image = cikti;
+            ButonlariAktifEt();
             return;
         }
         private void resmiGriMozaiklestir()
@@ -535,36 +384,34 @@ namespace Görüntü_İşleme
             return;
         }
 
-        private void resimSeçToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            resimAc();
-        }
-
         private void ResmiKaydetButonu_Click(object sender, EventArgs e)
         {
-            resmiKaydet();
-        }
-
-        private void NegatifAlmaButonu_Click(object sender, EventArgs e)
-        {
-            Goruntu_Isleyici.resimDegistir(DegistirilmisResim, Goruntu_Isleyici.resminNegatifiniAl(Orjinal));
+            G_Isleyici.ResimKaydet(Degistirilmis);
             return;
         }
-
         private void ResimSecButonu_Click(object sender, EventArgs e)
         {
-            Goruntu_Isleyici.resimAc(Orjinal);
-            aktifEt();
+            G_Isleyici.ResimAc(Orjinal);
+            ButonlariAktifEt();
+            return;
         }
-
+        private void NegatifAlmaButonu_Click(object sender, EventArgs e)
+        {
+            G_Isleyici.ResimDegistir(Degistirilmis, G_Isleyici.ResminNegatifiniAl(Orjinal));
+            ButonlariAktifEt();
+            return;
+        }
         private void GriSkalaButonu_Click(object sender, EventArgs e)
         {
-            griSkalaOlustur();
+            G_Isleyici.ResimDegistir(Orjinal, G_Isleyici.GriSkalaOlustur((int) GriSkalaDegerKutusu.Value));
+            ButonlariAktifEt();
+            return;
         }
-
         private void DaireButonu_Click(object sender, EventArgs e)
         {
-            daireOlustur();
+            G_Isleyici.ResimDegistir(Orjinal, G_Isleyici.DaireOlustur((int)DaireCozunurlukDegerKutusu.Value));
+            ButonlariAktifEt();
+            return;
         }
 
         private void OrneklemeButonu_Click(object sender, EventArgs e)
@@ -581,28 +428,28 @@ namespace Görüntü_İşleme
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            DegistirilmisResim.SizeMode = PictureBoxSizeMode.Normal;
+            Degistirilmis.SizeMode = PictureBoxSizeMode.Normal;
 
             return;
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            DegistirilmisResim.SizeMode = PictureBoxSizeMode.CenterImage;
+            Degistirilmis.SizeMode = PictureBoxSizeMode.CenterImage;
 
             return;
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-            DegistirilmisResim.SizeMode = PictureBoxSizeMode.StretchImage;
+            Degistirilmis.SizeMode = PictureBoxSizeMode.StretchImage;
 
             return;
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
-            DegistirilmisResim.SizeMode = PictureBoxSizeMode.Zoom;
+            Degistirilmis.SizeMode = PictureBoxSizeMode.Zoom;
 
             return;
         }

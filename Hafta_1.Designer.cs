@@ -35,13 +35,13 @@
             hazırlıkToolStripMenuItem = new ToolStripMenuItem();
             filtrelerToolStripMenuItem = new ToolStripMenuItem();
             Orjinal = new PictureBox();
-            DegistirilmisResim = new PictureBox();
+            Degistirilmis = new PictureBox();
             toolStrip1 = new ToolStrip();
             toolStripButton1 = new ToolStripButton();
             NegatifAlmaButonu = new Button();
             ResmiKaydetButonu = new Button();
             ResimSecButonu = new Button();
-            GriSkalaMaxDegerKutusu = new NumericUpDown();
+            GriSkalaDegerKutusu = new NumericUpDown();
             GriSkalaButonu = new Button();
             DaireButonu = new Button();
             DaireCozunurlukDegerKutusu = new NumericUpDown();
@@ -67,9 +67,9 @@
             SigdirButonu = new RadioButton();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Orjinal).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)DegistirilmisResim).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Degistirilmis).BeginInit();
             toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)GriSkalaMaxDegerKutusu).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)GriSkalaDegerKutusu).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DaireCozunurlukDegerKutusu).BeginInit();
             IslemlerGrupKutusu.SuspendLayout();
             GoruntuOlusturmaGrupKutusu.SuspendLayout();
@@ -95,9 +95,9 @@
             // ResimSecToolbar
             // 
             ResimSecToolbar.Name = "ResimSecToolbar";
-            ResimSecToolbar.Size = new Size(127, 22);
+            ResimSecToolbar.Size = new Size(180, 22);
             ResimSecToolbar.Text = "Resim Seç";
-            ResimSecToolbar.Click += resimSeçToolStripMenuItem_Click;
+            ResimSecToolbar.Click += ResimSecButonu_Click;
             // 
             // hazırlıkToolStripMenuItem
             // 
@@ -111,25 +111,25 @@
             filtrelerToolStripMenuItem.Size = new Size(58, 20);
             filtrelerToolStripMenuItem.Text = "Filtreler";
             // 
-            // OrjinalResim
+            // Orjinal
             // 
             Orjinal.BorderStyle = BorderStyle.FixedSingle;
             Orjinal.Location = new Point(12, 52);
-            Orjinal.Name = "OrjinalResim";
+            Orjinal.Name = "Orjinal";
             Orjinal.Size = new Size(512, 512);
             Orjinal.SizeMode = PictureBoxSizeMode.Zoom;
             Orjinal.TabIndex = 2;
             Orjinal.TabStop = false;
             // 
-            // DegistirilmisResim
+            // Degistirilmis
             // 
-            DegistirilmisResim.BorderStyle = BorderStyle.FixedSingle;
-            DegistirilmisResim.Location = new Point(532, 52);
-            DegistirilmisResim.Name = "DegistirilmisResim";
-            DegistirilmisResim.Size = new Size(512, 512);
-            DegistirilmisResim.SizeMode = PictureBoxSizeMode.Zoom;
-            DegistirilmisResim.TabIndex = 3;
-            DegistirilmisResim.TabStop = false;
+            Degistirilmis.BorderStyle = BorderStyle.FixedSingle;
+            Degistirilmis.Location = new Point(532, 52);
+            Degistirilmis.Name = "Degistirilmis";
+            Degistirilmis.Size = new Size(512, 512);
+            Degistirilmis.SizeMode = PictureBoxSizeMode.Zoom;
+            Degistirilmis.TabIndex = 3;
+            Degistirilmis.TabStop = false;
             // 
             // toolStrip1
             // 
@@ -148,7 +148,7 @@
             toolStripButton1.Name = "toolStripButton1";
             toolStripButton1.Size = new Size(23, 22);
             toolStripButton1.Text = "toolStripButton1";
-            toolStripButton1.Click += resimSeçToolStripMenuItem_Click;
+            toolStripButton1.Click += ResimSecButonu_Click;
             // 
             // NegatifAlmaButonu
             // 
@@ -182,15 +182,15 @@
             ResimSecButonu.UseVisualStyleBackColor = true;
             ResimSecButonu.Click += ResimSecButonu_Click;
             // 
-            // GriSkalaMaxDegerKutusu
+            // GriSkalaDegerKutusu
             // 
-            GriSkalaMaxDegerKutusu.Location = new Point(117, 51);
-            GriSkalaMaxDegerKutusu.Maximum = new decimal(new int[] { 1024, 0, 0, 0 });
-            GriSkalaMaxDegerKutusu.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            GriSkalaMaxDegerKutusu.Name = "GriSkalaMaxDegerKutusu";
-            GriSkalaMaxDegerKutusu.Size = new Size(60, 23);
-            GriSkalaMaxDegerKutusu.TabIndex = 9;
-            GriSkalaMaxDegerKutusu.Value = new decimal(new int[] { 128, 0, 0, 0 });
+            GriSkalaDegerKutusu.Location = new Point(117, 51);
+            GriSkalaDegerKutusu.Maximum = new decimal(new int[] { 1024, 0, 0, 0 });
+            GriSkalaDegerKutusu.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            GriSkalaDegerKutusu.Name = "GriSkalaDegerKutusu";
+            GriSkalaDegerKutusu.Size = new Size(60, 23);
+            GriSkalaDegerKutusu.TabIndex = 9;
+            GriSkalaDegerKutusu.Value = new decimal(new int[] { 128, 0, 0, 0 });
             // 
             // GriSkalaButonu
             // 
@@ -385,7 +385,7 @@
             // GoruntuOlusturmaGrupKutusu
             // 
             GoruntuOlusturmaGrupKutusu.Controls.Add(ResimSecButonu);
-            GoruntuOlusturmaGrupKutusu.Controls.Add(GriSkalaMaxDegerKutusu);
+            GoruntuOlusturmaGrupKutusu.Controls.Add(GriSkalaDegerKutusu);
             GoruntuOlusturmaGrupKutusu.Controls.Add(DaireCozunurlukDegerKutusu);
             GoruntuOlusturmaGrupKutusu.Controls.Add(GriSkalaButonu);
             GoruntuOlusturmaGrupKutusu.Controls.Add(DaireButonu);
@@ -465,7 +465,7 @@
             ClientSize = new Size(1055, 760);
             Controls.Add(CiktiOlcegiButonKutusu);
             Controls.Add(GoruntuOlusturmaGrupKutusu);
-            Controls.Add(DegistirilmisResim);
+            Controls.Add(Degistirilmis);
             Controls.Add(toolStrip1);
             Controls.Add(Orjinal);
             Controls.Add(menuStrip1);
@@ -479,10 +479,10 @@
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)Orjinal).EndInit();
-            ((System.ComponentModel.ISupportInitialize)DegistirilmisResim).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Degistirilmis).EndInit();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)GriSkalaMaxDegerKutusu).EndInit();
+            ((System.ComponentModel.ISupportInitialize)GriSkalaDegerKutusu).EndInit();
             ((System.ComponentModel.ISupportInitialize)DaireCozunurlukDegerKutusu).EndInit();
             IslemlerGrupKutusu.ResumeLayout(false);
             GoruntuOlusturmaGrupKutusu.ResumeLayout(false);
@@ -499,14 +499,14 @@
         private ToolStripMenuItem hazırlıkToolStripMenuItem;
         private ToolStripMenuItem filtrelerToolStripMenuItem;
         private PictureBox Orjinal;
-        private PictureBox DegistirilmisResim;
+        private PictureBox Degistirilmis;
         private ToolStripMenuItem ResimSecToolbar;
         private ToolStrip toolStrip1;
         private ToolStripButton toolStripButton1;
         private Button NegatifAlmaButonu;
         private Button ResmiKaydetButonu;
         private Button ResimSecButonu;
-        private NumericUpDown GriSkalaMaxDegerKutusu;
+        private NumericUpDown GriSkalaDegerKutusu;
         private Button GriSkalaButonu;
         private Button DaireButonu;
         private NumericUpDown DaireCozunurlukDegerKutusu;
