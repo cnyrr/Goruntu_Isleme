@@ -65,6 +65,8 @@
             MerkezleButonu = new RadioButton();
             NormalButonu = new RadioButton();
             SigdirButonu = new RadioButton();
+            DosyaAcici = new OpenFileDialog();
+            DosyaKaydedici = new SaveFileDialog();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Orjinal).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Degistirilmis).BeginInit();
@@ -95,7 +97,7 @@
             // ResimSecToolbar
             // 
             ResimSecToolbar.Name = "ResimSecToolbar";
-            ResimSecToolbar.Size = new Size(180, 22);
+            ResimSecToolbar.Size = new Size(127, 22);
             ResimSecToolbar.Text = "Resim Seç";
             ResimSecToolbar.Click += ResimSecButonu_Click;
             // 
@@ -457,6 +459,17 @@
             SigdirButonu.UseVisualStyleBackColor = true;
             SigdirButonu.CheckedChanged += radioButton3_CheckedChanged;
             // 
+            // DosyaAcici
+            // 
+            DosyaAcici.Filter = "\"Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*\"";
+            DosyaAcici.Title = "Resim Seç";
+            // 
+            // DosyaKaydedici
+            // 
+            DosyaKaydedici.DefaultExt = "\".PNG\"";
+            DosyaKaydedici.Filter = "\"Jpeg Resmi|*.jpg|Bitmap Resmi|*.bmp|Gif Resmi|*.gif|Png Resmi|*.png\"";
+            DosyaKaydedici.Title = "Resmi Kaydet";
+            // 
             // Hafta_1
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
@@ -475,7 +488,7 @@
             Name = "Hafta_1";
             ShowIcon = false;
             Text = "Resim Düzenleme Uygulaması";
-            Load += Form1_Load;
+            Load += Hafta_1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)Orjinal).EndInit();
@@ -530,5 +543,7 @@
         private Button NormalRenkDerinligiDegistirButonu;
         private Button MozaiklestirmeButonu;
         private ComboBox MozaiklemeListesi;
+        private OpenFileDialog DosyaAcici;
+        private SaveFileDialog DosyaKaydedici;
     }
 }

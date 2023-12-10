@@ -1,89 +1,53 @@
 ﻿public class G_Isleyici
 {
-    public static void ResimAc(PictureBox Secilen_Kutu)
+    public static void ResimAc(ref OpenFileDialog DosyaAcici, PictureBox Secilen_Kutu)
     {
-        // Create an OpenFileDialog.
-        OpenFileDialog DosyaAcici = new()
-        {
-            DefaultExt = ".png",
-            Filter = "Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*"
-        };
-        
-        // Show it.
-        DosyaAcici.ShowDialog();
-
         // Don't do anything if user didn't pick a file.
-        if (DosyaAcici.FileName != "")
+        if (DosyaAcici.ShowDialog() == DialogResult.OK)
         {
             // Create a FileStream from specified path.
             FileStream DosyaAkisi = new(DosyaAcici.FileName, FileMode.Open);
 
-            // Don't do anything unless FileStream has Read permission.
-            if (DosyaAkisi.CanRead)
-            {
-                // Get image from FileStream.
-                Image DosyadanResim = Image.FromStream(DosyaAkisi);
 
-                // Clone the Image to be able to close the FileStream.
-                Bitmap HafizadaResim = new(DosyadanResim);
+            // Get Image from FileStream.
+            Image DosyadanResim = Image.FromStream(DosyaAkisi);
 
-                // Change the picture.
-                ResimDegistir(Secilen_Kutu, HafizadaResim);
+            // Put the Image to the heap.
+            Bitmap HafizadanResim = new(DosyadanResim);
 
-                // Release the Image from memory.
-                DosyadanResim.Dispose();
-            }
-
-            // Close the FileStream.
+            // Release the Image and close the FileStream.
+            DosyadanResim.Dispose();
             DosyaAkisi.Close();
-        }
 
-        // Release the resources.
-        DosyaAcici.Dispose();
+            // Finally set the dynamically allocated image to Picturebox.
+            ResimDegistir(Secilen_Kutu, HafizadanResim);
+        }
 
         return;
     }
-    public static void ResimKaydet(PictureBox Secilen_Kutu)
+    public static void ResimKaydet(ref SaveFileDialog DosyaKaydedici, PictureBox Secilen_Kutu)
     {
-        // Create a SaveFileDialog.
-        SaveFileDialog DosyaKaydedici = new()
-        {
-            DefaultExt = ".PNG",
-            Filter = "Jpeg Resmi|*.jpg|Bitmap Resmi|*.bmp|Gif Resmi|*.gif|Png Resmi|*.png",
-            Title = "Resmi Kaydet"
-        };
-
-        // Show it.
-        DosyaKaydedici.ShowDialog();
-
         // Don't do anything if user didn't pick a location.
-        if (DosyaKaydedici.FileName != "")
+        if (DosyaKaydedici.ShowDialog() == DialogResult.OK)
         {
             // Create a FileStream from specified path.
-            FileStream DosyaAkisi = new(DosyaKaydedici.FileName, FileMode.OpenOrCreate);
+            FileStream DosyaAkisi = new(DosyaKaydedici.FileName, FileMode.Create);
 
-            // Don't do anything if FileStream doesn't have write access.
-            if (DosyaAkisi.CanWrite)
+            switch (DosyaKaydedici.FilterIndex)
             {
-                switch (DosyaKaydedici.FilterIndex)
-                {
-                    case 0:
+                case 1:
                         Secilen_Kutu.Image.Save(DosyaAkisi, System.Drawing.Imaging.ImageFormat.Jpeg); break;
-                    case 1:
+                case 2:
                         Secilen_Kutu.Image.Save(DosyaAkisi, System.Drawing.Imaging.ImageFormat.Bmp); break;
-                    case 2:
+                case 3:
                         Secilen_Kutu.Image.Save(DosyaAkisi, System.Drawing.Imaging.ImageFormat.Gif); break;
-                    case 3:
+                case 4:
                         Secilen_Kutu.Image.Save(DosyaAkisi, System.Drawing.Imaging.ImageFormat.Png); break;
-                }
             }
 
             // Close the stream. 
             DosyaAkisi.Close();
         }
-
-        // Release the resources.
-        DosyaKaydedici.Dispose();
 
         return;
     }

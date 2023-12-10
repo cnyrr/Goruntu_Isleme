@@ -13,7 +13,7 @@ namespace Görüntü_İşleme
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Hafta_1_Load(object sender, EventArgs e)
         {
             OrneklemeListesi.SelectedIndex = 0;
             RenkOrneklemeListesi.SelectedIndex = 0;
@@ -386,12 +386,12 @@ namespace Görüntü_İşleme
 
         private void ResmiKaydetButonu_Click(object sender, EventArgs e)
         {
-            G_Isleyici.ResimKaydet(Degistirilmis);
+            G_Isleyici.ResimKaydet(ref DosyaKaydedici, Degistirilmis);
             return;
         }
         private void ResimSecButonu_Click(object sender, EventArgs e)
         {
-            G_Isleyici.ResimAc(Orjinal);
+            G_Isleyici.ResimAc(ref DosyaAcici, Orjinal);
             ButonlariAktifEt();
             return;
         }
