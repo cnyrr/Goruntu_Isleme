@@ -403,13 +403,17 @@ namespace Görüntü_İşleme
         }
         private void GriSkalaButonu_Click(object sender, EventArgs e)
         {
-            G_Isleyici.ResimDegistir(Orjinal, G_Isleyici.GriSkalaOlustur((int) GriSkalaDegerKutusu.Value));
+            int skala_boyutu = (int)GriSkalaDegerKutusu.Value;
+
+            G_Isleyici.ResimDegistir(Orjinal, G_Isleyici.GriSkalaOlustur(skala_boyutu));
             ButonlariAktifEt();
             return;
         }
         private void DaireButonu_Click(object sender, EventArgs e)
         {
-            G_Isleyici.ResimDegistir(Orjinal, G_Isleyici.DaireOlustur((int)DaireCozunurlukDegerKutusu.Value));
+            int daire_cozunurluk = (int)DaireCozunurlukDegerKutusu.Value;
+
+            G_Isleyici.ResimDegistir(Orjinal, G_Isleyici.DaireOlustur(daire_cozunurluk));
             ButonlariAktifEt();
             return;
         }

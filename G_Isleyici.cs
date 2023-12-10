@@ -2,7 +2,7 @@
 {
     public static void ResimAc(PictureBox Secilen_Kutu)
     {
-        // Create a OpenFileDialog.
+        // Create an OpenFileDialog.
         OpenFileDialog DosyaAcici = new()
         {
             DefaultExt = ".png",
@@ -15,14 +15,27 @@
         // Don't do anything if user didn't pick a file.
         if (DosyaAcici.FileName != "")
         {
-            try
+            // Create a FileStream from specified path.
+            FileStream DosyaAkisi = new(DosyaAcici.FileName, FileMode.Open);
+
+            // Don't do anything unless FileStream has Read permission.
+            if (DosyaAkisi.CanRead)
             {
-                ResimDegistir(Secilen_Kutu, Image.FromFile(DosyaAcici.FileName));
+                // Get image from FileStream.
+                Image DosyadanResim = Image.FromStream(DosyaAkisi);
+
+                // Clone the Image to be able to close the FileStream.
+                Bitmap HafizadaResim = new(DosyadanResim);
+
+                // Change the picture.
+                ResimDegistir(Secilen_Kutu, HafizadaResim);
+
+                // Release the Image from memory.
+                DosyadanResim.Dispose();
             }
-            catch
-            { 
-                // Do nothing if it fails.
-            }
+
+            // Close the FileStream.
+            DosyaAkisi.Close();
         }
 
         // Release the resources.
@@ -30,7 +43,6 @@
 
         return;
     }
-
     public static void ResimKaydet(PictureBox Secilen_Kutu)
     {
         // Create a SaveFileDialog.
@@ -47,10 +59,10 @@
         // Don't do anything if user didn't pick a location.
         if (DosyaKaydedici.FileName != "")
         {
-            // Create a FileStream or specified path.
-            FileStream DosyaAkisi = (FileStream)DosyaKaydedici.OpenFile();
+            // Create a FileStream from specified path.
+            FileStream DosyaAkisi = new(DosyaKaydedici.FileName, FileMode.OpenOrCreate);
 
-            // Do nothing if stream doesn't have write access.
+            // Don't do anything if FileStream doesn't have write access.
             if (DosyaAkisi.CanWrite)
             {
                 switch (DosyaKaydedici.FilterIndex)
@@ -186,4 +198,65 @@
         // Return the dynamically allocated Bitmap.
         return DaireResmi;
     }
+    /*
+    public static Bitmap ResmiOrnekle(PictureBox Orjinal , int ornekleme_sikligi, int renk_ornekleme_sikligi)
+    {
+        // Define local function to not clutter rest of the function.
+        Color renkOrnekle(Color girdi, renk_ornekleme_sikligi)
+        {
+            int taban_deger, tavan_deger;
+
+            taban_deger = (girdi / ornekleme_sikligi) * ornekleme_sikligi;
+
+            tavan_deger = taban_deger + ornekleme_sikligi;
+
+            if (tavan_deger - girdi > girdi - taban_deger)
+            {
+                girdi = taban_deger;
+            }
+            else if (tavan_deger > 255)
+            {
+                girdi = 255;
+            }
+            else
+            {
+                girdi = tavan_deger;
+            }
+
+            return girdi;
+        }
+        
+        // Create a Bitmap of original image to be used in function.
+        Bitmap OrjinalResim = new(Orjinal.Image);
+
+        // Variables to not clutter the function.
+        int genislik = Orjinal.Image.Width;
+        int yukseklik = Orjinal.Image.Height;
+
+        // Create the result Bitmap.
+        Bitmap OrneklenmisResim = new(genislik / ornekleme_sikligi, yukseklik / ornekleme_sikligi);
+
+        // Create a Color to use in function.
+        Color orneklenecek_renk;
+
+        // Define loop parameters outside for performance.
+        int x, y;
+
+        for (y = 0; y < yukseklik / ornekleme_sikligi; y++)
+        {
+            for (x = 0; x < genislik / ornekleme_sikligi; x++)
+            {
+                orneklenecek_renk = OrjinalResim.GetPixel(x * ornekleme_sikligi, y * ornekleme_sikligi);
+
+                OrneklenmisResim.SetPixel(x, y, renkOrnekle(orneklenecek_renk));
+            }
+        }
+
+        // Release the resources.
+        OrjinalResim.Dispose();
+
+        // Return the dynamically allocated Bitmap.
+        return OrneklenmisResim;
+    }
+    */
 }
