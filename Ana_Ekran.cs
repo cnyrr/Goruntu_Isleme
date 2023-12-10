@@ -28,7 +28,6 @@ namespace Görüntü_İşleme
         private void AnaEkraniGoster(object? sender, EventArgs e)
         {
             this.Show();
-            GC.Collect();
             return;
         }
 
@@ -56,37 +55,37 @@ namespace Görüntü_İşleme
 
         private void HaftaUcButonu_Click(object sender, EventArgs e)
         {
-            //AltEkraniGoster(new Hafta_3());
+            AltEkraniGoster(new Hafta_3());
             return;
         }
 
         private void HaftaDortButonu_Click(object sender, EventArgs e)
         {
-            //AltEkraniGoster(new Hafta_4());
+            AltEkraniGoster(new Hafta_4());
             return;
         }
 
         private void HaftaBesButonu_Click(object sender, EventArgs e)
         {
-            //AltEkraniGoster(new Hafta_5());
+            AltEkraniGoster(new Hafta_5());
             return;
         }
 
         private void HaftaAltiButonu_Click(object sender, EventArgs e)
         {
-            //AltEkraniGoster(new Hafta_6());
+            AltEkraniGoster(new Hafta_6());
             return;
         }
 
         private void HaftaYediButonu_Click(object sender, EventArgs e)
         {
-            //AltEkraniGoster(new Hafta_7());
+            AltEkraniGoster(new Hafta_7());
             return;
         }
 
         private void HaftaSekizButonu_Click(object sender, EventArgs e)
         {
-            //AltEkraniGoster(new Hafta_8());
+            AltEkraniGoster(new Hafta_8());
             return;
         }
     }

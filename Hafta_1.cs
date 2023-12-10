@@ -390,7 +390,7 @@ namespace Görüntü_İşleme
                 }
             }
 
-            goruntuDegistir();
+            //goruntuDegistir();
             DegistirilmisResim.Image = null;
             DegistirilmisResim.Image = DuzenlenecekResim;
             aktifEt();
