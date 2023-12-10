@@ -68,11 +68,16 @@ namespace Görüntü_İşleme
             MozaiklemeListesi.Enabled = true;
         }
 
-        private void resimDegistir(Image eski_resim, Image yeni_resim)
+        private void resimDegistir(Image Degisecek_Resim, Bitmap Yeni_Resim)
         {
-            Image gecici_resim = eski_resim;
-            eski_resim = yeni_resim;
-            gecici_resim.Dispose();
+            Image Gecici_resim = Degisecek_Resim;
+            Degisecek_Resim = Yeni_Resim;
+
+            if (Gecici_resim != null)
+            {
+                Gecici_resim.Dispose();
+            }
+
             return;
         }
 
@@ -139,7 +144,7 @@ namespace Görüntü_İşleme
 
                 if (test.Width > 0 && test.Height > 0)
                 {
-                    OrjinalResim.Image = Image.FromFile(DosyaAcici.FileName);
+                    Orjinal.Image = Image.FromFile(DosyaAcici.FileName);
 
 
                     aktifEt();
@@ -182,12 +187,12 @@ namespace Görüntü_İşleme
             DosyaKaydedici.Dispose();
         }
 
-        private void resminNegatifiniAl()
+        private void resminNegatifiniAlOnceki()
         {
-            Bitmap DuzenlenecekResim = new(OrjinalResim.Image);
+            Bitmap DuzenlenecekResim = new(Orjinal.Image);
 
-            int yukseklik = OrjinalResim.Image.Height;
-            int genislik = OrjinalResim.Image.Width;
+            int yukseklik = Orjinal.Image.Height;
+            int genislik = Orjinal.Image.Width;
 
             Color yeni_renk;
             int R, G, B;
@@ -239,7 +244,7 @@ namespace Görüntü_İşleme
                 gri_tonu = Color.FromArgb((int)gri_degeri, (int)gri_degeri, (int)gri_degeri);
             }
 
-            resimDegistir(OrjinalResim.Image, gri_skala);
+            resimDegistir(Orjinal.Image, gri_skala);
 
             aktifEt();
             ResmiKaydetButonu.Enabled = false;
@@ -266,7 +271,7 @@ namespace Görüntü_İşleme
                 }
             }
 
-            OrjinalResim.Image = daire;
+            Orjinal.Image = daire;
 
             aktifEt();
             ResmiKaydetButonu.Enabled = false;
@@ -278,12 +283,12 @@ namespace Görüntü_İşleme
             int ornekleme_sikligi = int.Parse(OrneklemeListesi.SelectedItem.ToString());
             int renk_ornekleme_sikligi = int.Parse(RenkOrneklemeListesi.SelectedItem.ToString());
 
-            int genislik = OrjinalResim.Image.Width;
-            int yukseklik = OrjinalResim.Image.Height;
+            int genislik = Orjinal.Image.Width;
+            int yukseklik = Orjinal.Image.Height;
 
             int R, G, B;
 
-            Bitmap orneklenecek_gorsel = new(OrjinalResim.Image);
+            Bitmap orneklenecek_gorsel = new(Orjinal.Image);
             Bitmap orneklenmis_gorsel = new(genislik / ornekleme_sikligi, yukseklik / ornekleme_sikligi);
 
             Color orneklenmis_renk;
@@ -313,11 +318,11 @@ namespace Görüntü_İşleme
 
         private void resmiTekBantYap()
         {
-            Bitmap DuzenlenecekResim = new(OrjinalResim.Image);
+            Bitmap DuzenlenecekResim = new(Orjinal.Image);
             Color yeni_renk;
 
-            int yukseklik = OrjinalResim.Image.Height;
-            int genislik = OrjinalResim.Image.Width;
+            int yukseklik = Orjinal.Image.Height;
+            int genislik = Orjinal.Image.Width;
             int gecici_deger;
 
             for (int y = 0; y < yukseklik; y++)
@@ -363,11 +368,11 @@ namespace Görüntü_İşleme
 
         private void resimBandiniDegistir()
         {
-            Bitmap DuzenlenecekResim = new(OrjinalResim.Image);
+            Bitmap DuzenlenecekResim = new(Orjinal.Image);
             Color yeni_renk;
 
-            int yukseklik = OrjinalResim.Image.Height;
-            int genislik = OrjinalResim.Image.Width;
+            int yukseklik = Orjinal.Image.Height;
+            int genislik = Orjinal.Image.Width;
 
             for (int y = 0; y < yukseklik; y++)
             {
@@ -407,13 +412,13 @@ namespace Görüntü_İşleme
 
         private void resimGriRenkDerinligiDegistir()
         {
-            Bitmap DuzenlenecekResim = new(OrjinalResim.Image);
+            Bitmap DuzenlenecekResim = new(Orjinal.Image);
             Color yeni_renk;
 
             int gecici_deger;
 
-            int yukseklik = OrjinalResim.Image.Height;
-            int genislik = OrjinalResim.Image.Width;
+            int yukseklik = Orjinal.Image.Height;
+            int genislik = Orjinal.Image.Width;
 
             for (int y = 0; y < yukseklik; y++)
             {
@@ -439,13 +444,13 @@ namespace Görüntü_İşleme
 
         private void resimNormalRenkDerinligiDegistir()
         {
-            Bitmap DuzenlenecekResim = new(OrjinalResim.Image);
+            Bitmap DuzenlenecekResim = new(Orjinal.Image);
             Color yeni_renk;
 
             int gecici_R, gecici_G, gecici_B;
 
-            int yukseklik = OrjinalResim.Image.Height;
-            int genislik = OrjinalResim.Image.Width;
+            int yukseklik = Orjinal.Image.Height;
+            int genislik = Orjinal.Image.Width;
 
             for (int y = 0; y < yukseklik; y++)
             {
@@ -504,12 +509,12 @@ namespace Görüntü_İşleme
         }
         private void resmiGriMozaiklestir()
         {
-            Bitmap DuzenlenecekResim = new(OrjinalResim.Image);
+            Bitmap DuzenlenecekResim = new(Orjinal.Image);
             Color yeni_renk;
             double gri_ton;
 
-            int yukseklik = OrjinalResim.Image.Height;
-            int genislik = OrjinalResim.Image.Width;
+            int yukseklik = Orjinal.Image.Height;
+            int genislik = Orjinal.Image.Width;
 
 
             for (int y = 0; y < yukseklik; y++)
@@ -542,12 +547,14 @@ namespace Görüntü_İşleme
 
         private void NegatifAlmaButonu_Click(object sender, EventArgs e)
         {
-            resminNegatifiniAl();
+            Goruntu_Isleyici.resimDegistir(DegistirilmisResim, Goruntu_Isleyici.resminNegatifiniAl(Orjinal));
+            return;
         }
 
         private void ResimSecButonu_Click(object sender, EventArgs e)
         {
-            resimAc();
+            Goruntu_Isleyici.resimAc(Orjinal);
+            aktifEt();
         }
 
         private void GriSkalaButonu_Click(object sender, EventArgs e)

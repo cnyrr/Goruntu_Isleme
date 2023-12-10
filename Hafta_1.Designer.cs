@@ -34,7 +34,7 @@
             ResimSecToolbar = new ToolStripMenuItem();
             hazırlıkToolStripMenuItem = new ToolStripMenuItem();
             filtrelerToolStripMenuItem = new ToolStripMenuItem();
-            OrjinalResim = new PictureBox();
+            Orjinal = new PictureBox();
             DegistirilmisResim = new PictureBox();
             toolStrip1 = new ToolStrip();
             toolStripButton1 = new ToolStripButton();
@@ -66,7 +66,7 @@
             NormalButonu = new RadioButton();
             SigdirButonu = new RadioButton();
             menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)OrjinalResim).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Orjinal).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DegistirilmisResim).BeginInit();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GriSkalaMaxDegerKutusu).BeginInit();
@@ -113,13 +113,13 @@
             // 
             // OrjinalResim
             // 
-            OrjinalResim.BorderStyle = BorderStyle.FixedSingle;
-            OrjinalResim.Location = new Point(12, 52);
-            OrjinalResim.Name = "OrjinalResim";
-            OrjinalResim.Size = new Size(512, 512);
-            OrjinalResim.SizeMode = PictureBoxSizeMode.Zoom;
-            OrjinalResim.TabIndex = 2;
-            OrjinalResim.TabStop = false;
+            Orjinal.BorderStyle = BorderStyle.FixedSingle;
+            Orjinal.Location = new Point(12, 52);
+            Orjinal.Name = "OrjinalResim";
+            Orjinal.Size = new Size(512, 512);
+            Orjinal.SizeMode = PictureBoxSizeMode.Zoom;
+            Orjinal.TabIndex = 2;
+            Orjinal.TabStop = false;
             // 
             // DegistirilmisResim
             // 
@@ -467,7 +467,7 @@
             Controls.Add(GoruntuOlusturmaGrupKutusu);
             Controls.Add(DegistirilmisResim);
             Controls.Add(toolStrip1);
-            Controls.Add(OrjinalResim);
+            Controls.Add(Orjinal);
             Controls.Add(menuStrip1);
             Controls.Add(IslemlerGrupKutusu);
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -478,7 +478,7 @@
             Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)OrjinalResim).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Orjinal).EndInit();
             ((System.ComponentModel.ISupportInitialize)DegistirilmisResim).EndInit();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
@@ -498,7 +498,7 @@
         private ToolStripMenuItem dosyaToolStripMenuItem;
         private ToolStripMenuItem hazırlıkToolStripMenuItem;
         private ToolStripMenuItem filtrelerToolStripMenuItem;
-        private PictureBox OrjinalResim;
+        private PictureBox Orjinal;
         private PictureBox DegistirilmisResim;
         private ToolStripMenuItem ResimSecToolbar;
         private ToolStrip toolStrip1;
