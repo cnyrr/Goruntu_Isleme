@@ -33,12 +33,7 @@ namespace Görüntü_İşleme
 
         private void Ana_Ekran_Load(object sender, EventArgs e)
         {
-            HaftaUcButonu.Enabled = false;
-            HaftaDortButonu.Enabled = false;
-            HaftaBesButonu.Enabled = false;
-            HaftaAltiButonu.Enabled = false;
-            HaftaYediButonu.Enabled = false;
-            HaftaSekizButonu.Enabled = false;
+            return;
         }
 
         private void HaftaBirButonu_Click(object sender, EventArgs e)
