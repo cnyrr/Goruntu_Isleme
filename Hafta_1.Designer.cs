@@ -474,7 +474,6 @@
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            AutoSize = true;
             ClientSize = new Size(1055, 760);
             Controls.Add(CiktiOlcegiButonKutusu);
             Controls.Add(GoruntuOlusturmaGrupKutusu);
@@ -485,6 +484,7 @@
             Controls.Add(IslemlerGrupKutusu);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MainMenuStrip = menuStrip1;
+            MaximizeBox = false;
             Name = "Hafta_1";
             ShowIcon = false;
             Text = "Resim Düzenleme Uygulaması";

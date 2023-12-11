@@ -36,6 +36,8 @@
             HaftaYediButonu = new Button();
             HaftaSekizButonu = new Button();
             HaftaDortButonu = new Button();
+            HaftaDokuzButonu = new Button();
+            HaftaOnButonu = new Button();
             SuspendLayout();
             // 
             // HaftaBirButonu
@@ -60,7 +62,7 @@
             // 
             // HaftaBesButonu
             // 
-            HaftaBesButonu.Location = new Point(12, 82);
+            HaftaBesButonu.Location = new Point(548, 12);
             HaftaBesButonu.Name = "HaftaBesButonu";
             HaftaBesButonu.Size = new Size(128, 64);
             HaftaBesButonu.TabIndex = 2;
@@ -70,7 +72,7 @@
             // 
             // HaftaAltiButonu
             // 
-            HaftaAltiButonu.Location = new Point(146, 82);
+            HaftaAltiButonu.Location = new Point(12, 82);
             HaftaAltiButonu.Name = "HaftaAltiButonu";
             HaftaAltiButonu.Size = new Size(128, 64);
             HaftaAltiButonu.TabIndex = 3;
@@ -90,7 +92,7 @@
             // 
             // HaftaYediButonu
             // 
-            HaftaYediButonu.Location = new Point(280, 82);
+            HaftaYediButonu.Location = new Point(146, 82);
             HaftaYediButonu.Name = "HaftaYediButonu";
             HaftaYediButonu.Size = new Size(128, 64);
             HaftaYediButonu.TabIndex = 5;
@@ -100,7 +102,7 @@
             // 
             // HaftaSekizButonu
             // 
-            HaftaSekizButonu.Location = new Point(414, 82);
+            HaftaSekizButonu.Location = new Point(280, 82);
             HaftaSekizButonu.Name = "HaftaSekizButonu";
             HaftaSekizButonu.Size = new Size(128, 64);
             HaftaSekizButonu.TabIndex = 7;
@@ -118,10 +120,32 @@
             HaftaDortButonu.UseVisualStyleBackColor = true;
             HaftaDortButonu.Click += HaftaDortButonu_Click;
             // 
+            // HaftaDokuzButonu
+            // 
+            HaftaDokuzButonu.Location = new Point(414, 82);
+            HaftaDokuzButonu.Name = "HaftaDokuzButonu";
+            HaftaDokuzButonu.Size = new Size(128, 64);
+            HaftaDokuzButonu.TabIndex = 9;
+            HaftaDokuzButonu.Text = "9. Hafta";
+            HaftaDokuzButonu.UseVisualStyleBackColor = true;
+            HaftaDokuzButonu.Click += HaftaDokuzButonu_Click;
+            // 
+            // HaftaOnButonu
+            // 
+            HaftaOnButonu.Location = new Point(548, 82);
+            HaftaOnButonu.Name = "HaftaOnButonu";
+            HaftaOnButonu.Size = new Size(128, 64);
+            HaftaOnButonu.TabIndex = 10;
+            HaftaOnButonu.Text = "10. Hafta";
+            HaftaOnButonu.UseVisualStyleBackColor = true;
+            // 
             // Ana_Ekran
             // 
-            AutoScaleMode = AutoScaleMode.None;
-            ClientSize = new Size(553, 159);
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            ClientSize = new Size(689, 159);
+            Controls.Add(HaftaOnButonu);
+            Controls.Add(HaftaDokuzButonu);
             Controls.Add(HaftaDortButonu);
             Controls.Add(HaftaSekizButonu);
             Controls.Add(HaftaYediButonu);
@@ -131,6 +155,7 @@
             Controls.Add(HaftaIkiButonu);
             Controls.Add(HaftaBirButonu);
             Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            MaximizeBox = false;
             Name = "Ana_Ekran";
             Text = "Ana Ekran";
             Load += Ana_Ekran_Load;
@@ -147,5 +172,7 @@
         private Button HaftaYediButonu;
         private Button HaftaSekizButonu;
         private Button HaftaDortButonu;
+        private Button HaftaDokuzButonu;
+        private Button HaftaOnButonu;
     }
 }
