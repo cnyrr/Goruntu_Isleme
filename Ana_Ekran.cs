@@ -33,6 +33,18 @@ namespace Görüntü_İşleme
 
         private void Ana_Ekran_Load(object sender, EventArgs e)
         {
+            HaftaBirSecimKutusu.SelectedIndex = 0;
+            HaftaIkiSecimKutusu.SelectedIndex = 0;
+            HaftaUcSecimKutusu.SelectedIndex = 0;
+            HaftaDortSecimKutusu.SelectedIndex = 0;
+            HaftaBesSecimKutusu.SelectedIndex = 0;
+            HaftaAltiSecimKutusu.SelectedIndex = 0;
+            HaftaYediSecimKutusu.SelectedIndex = 0;
+            HaftaSekizSecimKutusu.SelectedIndex = 0;
+            HaftaDokuzSecimKutusu.SelectedIndex = 0;
+            HaftaOnSecimKutusu.SelectedIndex = 0;
+            HaftaOnBirSecimKutusu.SelectedIndex = 0;
+            HaftaOnIkiSecimKutusu.SelectedIndex = 0;
             return;
         }
 
@@ -56,37 +68,46 @@ namespace Görüntü_İşleme
 
         private void HaftaDortButonu_Click(object sender, EventArgs e)
         {
-            AltEkraniGoster(new Hafta_4());
             return;
         }
 
         private void HaftaBesButonu_Click(object sender, EventArgs e)
         {
-            AltEkraniGoster(new Hafta_5());
             return;
         }
 
         private void HaftaAltiButonu_Click(object sender, EventArgs e)
         {
-            AltEkraniGoster(new Hafta_6());
             return;
         }
 
         private void HaftaYediButonu_Click(object sender, EventArgs e)
         {
-            AltEkraniGoster(new Hafta_7());
             return;
         }
 
         private void HaftaSekizButonu_Click(object sender, EventArgs e)
         {
-            AltEkraniGoster(new Hafta_8());
             return;
         }
 
         private void HaftaDokuzButonu_Click(object sender, EventArgs e)
         {
-            AltEkraniGoster(new Hafta_8());
+            return;
+        }
+
+        private void HaftaOnButonu_Click(object sender, EventArgs e)
+        {
+            return;
+        }
+
+        private void HaftaOnBirButonu_Click(object sender, EventArgs e)
+        {
+            return;
+        }
+
+        private void HaftaOnIkiButonu_Click(object sender, EventArgs e)
+        {
             return;
         }
     }

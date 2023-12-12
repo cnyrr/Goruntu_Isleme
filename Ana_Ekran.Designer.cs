@@ -38,20 +38,20 @@
             HaftaDortButonu = new Button();
             HaftaDokuzButonu = new Button();
             HaftaOnButonu = new Button();
-            button1 = new Button();
-            button3 = new Button();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
-            comboBox3 = new ComboBox();
-            comboBox4 = new ComboBox();
-            comboBox5 = new ComboBox();
-            comboBox6 = new ComboBox();
-            comboBox7 = new ComboBox();
-            comboBox8 = new ComboBox();
-            comboBox9 = new ComboBox();
-            comboBox10 = new ComboBox();
-            comboBox11 = new ComboBox();
-            comboBox12 = new ComboBox();
+            HaftaOnBirButonu = new Button();
+            HaftaOnIkiButonu = new Button();
+            HaftaBirSecimKutusu = new ComboBox();
+            HaftaIkiSecimKutusu = new ComboBox();
+            HaftaUcSecimKutusu = new ComboBox();
+            HaftaDortSecimKutusu = new ComboBox();
+            HaftaBesSecimKutusu = new ComboBox();
+            HaftaAltiSecimKutusu = new ComboBox();
+            HaftaYediSecimKutusu = new ComboBox();
+            HaftaSekizSecimKutusu = new ComboBox();
+            HaftaDokuzSecimKutusu = new ComboBox();
+            HaftaOnSecimKutusu = new ComboBox();
+            HaftaOnBirSecimKutusu = new ComboBox();
+            HaftaOnIkiSecimKutusu = new ComboBox();
             SuspendLayout();
             // 
             // HaftaBirButonu
@@ -152,140 +152,155 @@
             HaftaOnButonu.TabIndex = 10;
             HaftaOnButonu.Text = "10. Hafta";
             HaftaOnButonu.UseVisualStyleBackColor = true;
+            HaftaOnButonu.Click += HaftaOnButonu_Click;
             // 
-            // button1
+            // HaftaOnBirButonu
             // 
-            button1.Location = new Point(548, 152);
-            button1.Name = "button1";
-            button1.Size = new Size(128, 64);
-            button1.TabIndex = 11;
-            button1.Text = "11. Hafta";
-            button1.UseVisualStyleBackColor = true;
+            HaftaOnBirButonu.Location = new Point(548, 152);
+            HaftaOnBirButonu.Name = "HaftaOnBirButonu";
+            HaftaOnBirButonu.Size = new Size(128, 64);
+            HaftaOnBirButonu.TabIndex = 11;
+            HaftaOnBirButonu.Text = "11. Hafta";
+            HaftaOnBirButonu.UseVisualStyleBackColor = true;
+            HaftaOnBirButonu.Click += HaftaOnBirButonu_Click;
             // 
-            // button3
+            // HaftaOnIkiButonu
             // 
-            button3.Location = new Point(548, 222);
-            button3.Name = "button3";
-            button3.Size = new Size(128, 64);
-            button3.TabIndex = 13;
-            button3.Text = "12. Hafta";
-            button3.UseVisualStyleBackColor = true;
+            HaftaOnIkiButonu.Location = new Point(548, 222);
+            HaftaOnIkiButonu.Name = "HaftaOnIkiButonu";
+            HaftaOnIkiButonu.Size = new Size(128, 64);
+            HaftaOnIkiButonu.TabIndex = 13;
+            HaftaOnIkiButonu.Text = "12. Hafta";
+            HaftaOnIkiButonu.UseVisualStyleBackColor = true;
+            HaftaOnIkiButonu.Click += HaftaOnIkiButonu_Click;
             // 
-            // comboBox1
+            // HaftaBirSecimKutusu
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(146, 25);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(128, 40);
-            comboBox1.TabIndex = 14;
+            HaftaBirSecimKutusu.FormattingEnabled = true;
+            HaftaBirSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev", "4. Ödev", "5. Ödev", "6. Ödev", "7. Ödev", "8. Ödev" });
+            HaftaBirSecimKutusu.Location = new Point(146, 25);
+            HaftaBirSecimKutusu.Name = "HaftaBirSecimKutusu";
+            HaftaBirSecimKutusu.Size = new Size(128, 40);
+            HaftaBirSecimKutusu.TabIndex = 14;
             // 
-            // comboBox2
+            // HaftaIkiSecimKutusu
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(146, 95);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(128, 40);
-            comboBox2.TabIndex = 15;
+            HaftaIkiSecimKutusu.FormattingEnabled = true;
+            HaftaIkiSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev A", "3. Ödev B", "3. Ödev C", "4. Ödev", "5. Ödev A", "5. Ödev B", "6. Ödev A", "6. Ödev B", "7. Ödev", "8. Ödev", "9. Ödev", "10. Ödev" });
+            HaftaIkiSecimKutusu.Location = new Point(146, 95);
+            HaftaIkiSecimKutusu.Name = "HaftaIkiSecimKutusu";
+            HaftaIkiSecimKutusu.Size = new Size(128, 40);
+            HaftaIkiSecimKutusu.TabIndex = 15;
             // 
-            // comboBox3
+            // HaftaUcSecimKutusu
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(146, 165);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(128, 40);
-            comboBox3.TabIndex = 16;
+            HaftaUcSecimKutusu.FormattingEnabled = true;
+            HaftaUcSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev", "4. Ödev", "5. Ödev", "6. Ödev", "7. Ödev", "8. Ödev" });
+            HaftaUcSecimKutusu.Location = new Point(146, 165);
+            HaftaUcSecimKutusu.Name = "HaftaUcSecimKutusu";
+            HaftaUcSecimKutusu.Size = new Size(128, 40);
+            HaftaUcSecimKutusu.TabIndex = 16;
             // 
-            // comboBox4
+            // HaftaDortSecimKutusu
             // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(146, 235);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(128, 40);
-            comboBox4.TabIndex = 17;
+            HaftaDortSecimKutusu.FormattingEnabled = true;
+            HaftaDortSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev", "4. Ödev", "5. Ödev", "6. Ödev", "7. Ödev", "8. Ödev" });
+            HaftaDortSecimKutusu.Location = new Point(146, 235);
+            HaftaDortSecimKutusu.Name = "HaftaDortSecimKutusu";
+            HaftaDortSecimKutusu.Size = new Size(128, 40);
+            HaftaDortSecimKutusu.TabIndex = 17;
             // 
-            // comboBox5
+            // HaftaBesSecimKutusu
             // 
-            comboBox5.FormattingEnabled = true;
-            comboBox5.Location = new Point(414, 25);
-            comboBox5.Name = "comboBox5";
-            comboBox5.Size = new Size(128, 40);
-            comboBox5.TabIndex = 18;
+            HaftaBesSecimKutusu.FormattingEnabled = true;
+            HaftaBesSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev", "4. Ödev", "5. Ödev", "6. Ödev", "7. Ödev", "8. Ödev" });
+            HaftaBesSecimKutusu.Location = new Point(414, 25);
+            HaftaBesSecimKutusu.Name = "HaftaBesSecimKutusu";
+            HaftaBesSecimKutusu.Size = new Size(128, 40);
+            HaftaBesSecimKutusu.TabIndex = 18;
             // 
-            // comboBox6
+            // HaftaAltiSecimKutusu
             // 
-            comboBox6.FormattingEnabled = true;
-            comboBox6.Location = new Point(414, 95);
-            comboBox6.Name = "comboBox6";
-            comboBox6.Size = new Size(128, 40);
-            comboBox6.TabIndex = 19;
+            HaftaAltiSecimKutusu.FormattingEnabled = true;
+            HaftaAltiSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev", "4. Ödev", "5. Ödev", "6. Ödev", "7. Ödev", "8. Ödev" });
+            HaftaAltiSecimKutusu.Location = new Point(414, 95);
+            HaftaAltiSecimKutusu.Name = "HaftaAltiSecimKutusu";
+            HaftaAltiSecimKutusu.Size = new Size(128, 40);
+            HaftaAltiSecimKutusu.TabIndex = 19;
             // 
-            // comboBox7
+            // HaftaYediSecimKutusu
             // 
-            comboBox7.FormattingEnabled = true;
-            comboBox7.Location = new Point(414, 165);
-            comboBox7.Name = "comboBox7";
-            comboBox7.Size = new Size(128, 40);
-            comboBox7.TabIndex = 20;
+            HaftaYediSecimKutusu.FormattingEnabled = true;
+            HaftaYediSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev", "4. Ödev", "5. Ödev", "6. Ödev", "7. Ödev", "8. Ödev" });
+            HaftaYediSecimKutusu.Location = new Point(414, 165);
+            HaftaYediSecimKutusu.Name = "HaftaYediSecimKutusu";
+            HaftaYediSecimKutusu.Size = new Size(128, 40);
+            HaftaYediSecimKutusu.TabIndex = 20;
             // 
-            // comboBox8
+            // HaftaSekizSecimKutusu
             // 
-            comboBox8.FormattingEnabled = true;
-            comboBox8.Location = new Point(414, 235);
-            comboBox8.Name = "comboBox8";
-            comboBox8.Size = new Size(128, 40);
-            comboBox8.TabIndex = 21;
+            HaftaSekizSecimKutusu.FormattingEnabled = true;
+            HaftaSekizSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev", "4. Ödev", "5. Ödev", "6. Ödev", "7. Ödev", "8. Ödev" });
+            HaftaSekizSecimKutusu.Location = new Point(414, 235);
+            HaftaSekizSecimKutusu.Name = "HaftaSekizSecimKutusu";
+            HaftaSekizSecimKutusu.Size = new Size(128, 40);
+            HaftaSekizSecimKutusu.TabIndex = 21;
             // 
-            // comboBox9
+            // HaftaDokuzSecimKutusu
             // 
-            comboBox9.FormattingEnabled = true;
-            comboBox9.Location = new Point(682, 25);
-            comboBox9.Name = "comboBox9";
-            comboBox9.Size = new Size(128, 40);
-            comboBox9.TabIndex = 22;
+            HaftaDokuzSecimKutusu.FormattingEnabled = true;
+            HaftaDokuzSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev", "4. Ödev", "5. Ödev", "6. Ödev", "7. Ödev", "8. Ödev" });
+            HaftaDokuzSecimKutusu.Location = new Point(682, 25);
+            HaftaDokuzSecimKutusu.Name = "HaftaDokuzSecimKutusu";
+            HaftaDokuzSecimKutusu.Size = new Size(128, 40);
+            HaftaDokuzSecimKutusu.TabIndex = 22;
             // 
-            // comboBox10
+            // HaftaOnSecimKutusu
             // 
-            comboBox10.FormattingEnabled = true;
-            comboBox10.Location = new Point(682, 95);
-            comboBox10.Name = "comboBox10";
-            comboBox10.Size = new Size(128, 40);
-            comboBox10.TabIndex = 23;
+            HaftaOnSecimKutusu.FormattingEnabled = true;
+            HaftaOnSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev", "4. Ödev", "5. Ödev", "6. Ödev", "7. Ödev", "8. Ödev" });
+            HaftaOnSecimKutusu.Location = new Point(682, 95);
+            HaftaOnSecimKutusu.Name = "HaftaOnSecimKutusu";
+            HaftaOnSecimKutusu.Size = new Size(128, 40);
+            HaftaOnSecimKutusu.TabIndex = 23;
             // 
-            // comboBox11
+            // HaftaOnBirSecimKutusu
             // 
-            comboBox11.FormattingEnabled = true;
-            comboBox11.Location = new Point(682, 165);
-            comboBox11.Name = "comboBox11";
-            comboBox11.Size = new Size(128, 40);
-            comboBox11.TabIndex = 24;
+            HaftaOnBirSecimKutusu.FormattingEnabled = true;
+            HaftaOnBirSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev", "4. Ödev", "5. Ödev", "6. Ödev", "7. Ödev", "8. Ödev" });
+            HaftaOnBirSecimKutusu.Location = new Point(682, 165);
+            HaftaOnBirSecimKutusu.Name = "HaftaOnBirSecimKutusu";
+            HaftaOnBirSecimKutusu.Size = new Size(128, 40);
+            HaftaOnBirSecimKutusu.TabIndex = 24;
             // 
-            // comboBox12
+            // HaftaOnIkiSecimKutusu
             // 
-            comboBox12.FormattingEnabled = true;
-            comboBox12.Location = new Point(682, 235);
-            comboBox12.Name = "comboBox12";
-            comboBox12.Size = new Size(128, 40);
-            comboBox12.TabIndex = 25;
+            HaftaOnIkiSecimKutusu.FormattingEnabled = true;
+            HaftaOnIkiSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev", "4. Ödev", "5. Ödev", "6. Ödev", "7. Ödev", "8. Ödev" });
+            HaftaOnIkiSecimKutusu.Location = new Point(682, 235);
+            HaftaOnIkiSecimKutusu.Name = "HaftaOnIkiSecimKutusu";
+            HaftaOnIkiSecimKutusu.Size = new Size(128, 40);
+            HaftaOnIkiSecimKutusu.TabIndex = 25;
             // 
             // Ana_Ekran
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(823, 298);
-            Controls.Add(comboBox12);
-            Controls.Add(comboBox11);
-            Controls.Add(comboBox10);
-            Controls.Add(comboBox9);
-            Controls.Add(comboBox8);
-            Controls.Add(comboBox7);
-            Controls.Add(comboBox6);
-            Controls.Add(comboBox5);
-            Controls.Add(comboBox4);
-            Controls.Add(comboBox3);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
-            Controls.Add(button3);
-            Controls.Add(button1);
+            Controls.Add(HaftaOnIkiSecimKutusu);
+            Controls.Add(HaftaOnBirSecimKutusu);
+            Controls.Add(HaftaOnSecimKutusu);
+            Controls.Add(HaftaDokuzSecimKutusu);
+            Controls.Add(HaftaSekizSecimKutusu);
+            Controls.Add(HaftaYediSecimKutusu);
+            Controls.Add(HaftaAltiSecimKutusu);
+            Controls.Add(HaftaBesSecimKutusu);
+            Controls.Add(HaftaDortSecimKutusu);
+            Controls.Add(HaftaUcSecimKutusu);
+            Controls.Add(HaftaIkiSecimKutusu);
+            Controls.Add(HaftaBirSecimKutusu);
+            Controls.Add(HaftaOnIkiButonu);
+            Controls.Add(HaftaOnBirButonu);
             Controls.Add(HaftaOnButonu);
             Controls.Add(HaftaDokuzButonu);
             Controls.Add(HaftaDortButonu);
@@ -316,19 +331,19 @@
         private Button HaftaDortButonu;
         private Button HaftaDokuzButonu;
         private Button HaftaOnButonu;
-        private Button button1;
-        private Button button3;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
-        private ComboBox comboBox3;
-        private ComboBox comboBox4;
-        private ComboBox comboBox5;
-        private ComboBox comboBox6;
-        private ComboBox comboBox7;
-        private ComboBox comboBox8;
-        private ComboBox comboBox9;
-        private ComboBox comboBox10;
-        private ComboBox comboBox11;
-        private ComboBox comboBox12;
+        private Button HaftaOnBirButonu;
+        private Button HaftaOnIkiButonu;
+        private ComboBox HaftaBirSecimKutusu;
+        private ComboBox HaftaIkiSecimKutusu;
+        private ComboBox HaftaUcSecimKutusu;
+        private ComboBox HaftaDortSecimKutusu;
+        private ComboBox HaftaBesSecimKutusu;
+        private ComboBox HaftaAltiSecimKutusu;
+        private ComboBox HaftaYediSecimKutusu;
+        private ComboBox HaftaSekizSecimKutusu;
+        private ComboBox HaftaDokuzSecimKutusu;
+        private ComboBox HaftaOnSecimKutusu;
+        private ComboBox HaftaOnBirSecimKutusu;
+        private ComboBox HaftaOnIkiSecimKutusu;
     }
 }
