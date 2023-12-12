@@ -16,5 +16,10 @@ namespace Görüntü_İşleme
         {
             InitializeComponent();
         }
+
+        private void HaftaBirButonu_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
