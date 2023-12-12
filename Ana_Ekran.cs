@@ -68,46 +68,55 @@ namespace Görüntü_İşleme
 
         private void HaftaDortButonu_Click(object sender, EventArgs e)
         {
+            // Not implemented.
             return;
         }
 
         private void HaftaBesButonu_Click(object sender, EventArgs e)
         {
+            AltEkraniGoster(new Hafta_5());
             return;
         }
 
         private void HaftaAltiButonu_Click(object sender, EventArgs e)
         {
+            // Not implemented.
             return;
         }
 
         private void HaftaYediButonu_Click(object sender, EventArgs e)
         {
+            // Not implemented.
             return;
         }
 
         private void HaftaSekizButonu_Click(object sender, EventArgs e)
         {
+            // Not implemented.
             return;
         }
 
         private void HaftaDokuzButonu_Click(object sender, EventArgs e)
         {
+            // Not implemented.
             return;
         }
 
         private void HaftaOnButonu_Click(object sender, EventArgs e)
         {
+            // Not implemented.
             return;
         }
 
         private void HaftaOnBirButonu_Click(object sender, EventArgs e)
         {
+            // Not implemented.
             return;
         }
 
         private void HaftaOnIkiButonu_Click(object sender, EventArgs e)
         {
+            // Not implemented.
             return;
         }
     }
