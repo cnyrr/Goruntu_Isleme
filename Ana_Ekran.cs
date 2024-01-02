@@ -12,10 +12,48 @@ namespace Görüntü_İşleme
 {
     public partial class Ana_Ekran : Form
     {
+        enum HaftaSecim
+        {
+            Tek_Parça,
+            Ödev_1, Ödev_1_A, Ödev_1_B, Ödev_1_C, Ödev_1_D,
+            Ödev_2, Ödev_2_A, Ödev_2_B, Ödev_2_C, Ödev_2_D,
+            Ödev_3, Ödev_3_A, Ödev_3_B, Ödev_3_C, Ödev_3_D,
+            Ödev_4, Ödev_4_A, Ödev_4_B, Ödev_4_C, Ödev_4_D,
+            Ödev_5, Ödev_5_A, Ödev_5_B, Ödev_5_C, Ödev_5_D,
+            Ödev_6, Ödev_6_A, Ödev_6_B, Ödev_6_C, Ödev_6_D,
+            Ödev_7, Ödev_7_A, Ödev_7_B, Ödev_7_C, Ödev_7_D,
+            Ödev_8, Ödev_8_A, Ödev_8_B, Ödev_8_C, Ödev_8_D,
+            Ödev_9, Ödev_9_A, Ödev_9_B, Ödev_9_C, Ödev_9_D,
+            Ödev_10, Ödev_10_A, Ödev_10_B, Ödev_10_C, Ödev_10_D,
+            Ödev_11, Ödev_11_A, Ödev_11_B, Ödev_11_C, Ödev_11_D,
+            Ödev_12, Ödev_12_A, Ödev_12_B, Ödev_12_C, Ödev_12_D,
+        }
+
         public Ana_Ekran()
         {
             InitializeComponent();
+            // 1. Hafta Ödev Tanımlaması:
+            HaftaBirSecimKutusu.Items.Add(HaftaSecim.Tek_Parça);
+
+            // 2. Hafta Ödev Tanımlaması:
+            HaftaIkiSecimKutusu.Items.Add(HaftaSecim.Ödev_1);
+            HaftaIkiSecimKutusu.Items.Add(HaftaSecim.Ödev_2);
+            HaftaIkiSecimKutusu.Items.Add(HaftaSecim.Ödev_3);
+            HaftaIkiSecimKutusu.Items.Add(HaftaSecim.Ödev_4);
+            HaftaIkiSecimKutusu.Items.Add(HaftaSecim.Ödev_5);
+            HaftaIkiSecimKutusu.Items.Add(HaftaSecim.Ödev_6);
+            HaftaIkiSecimKutusu.Items.Add(HaftaSecim.Ödev_7);
+            HaftaIkiSecimKutusu.Items.Add(HaftaSecim.Ödev_8);
+
+            // 3. Hafta Ödev Tanımlaması:
+            // 4. Hafta Ödev Tanımlaması:
+            // 5. Hafta Ödev Tanımlaması:
+            // 6. Hafta Ödev Tanımlaması:
+            // 7. Hafta Ödev Tanımlaması:
+            // 8. Hafta Ödev Tanımlaması:
         }
+
+
 
         private void AltEkraniGoster(Form yeni_ekran)
         {
@@ -56,7 +94,36 @@ namespace Görüntü_İşleme
 
         private void HaftaIkiButonu_Click(object sender, EventArgs e)
         {
-            AltEkraniGoster(new Hafta_2());
+            switch (HaftaIkiSecimKutusu.SelectedItem)
+            {
+                case HaftaSecim.Ödev_1:
+                    // AltEkraniGoster(new Hafta_2_Odev_1());
+                    break;
+                case HaftaSecim.Ödev_2:
+                    // AltEkraniGoster(new Hafta_2_Odev_2());
+                    break;
+                case HaftaSecim.Ödev_3:
+                    // AltEkraniGoster(new Hafta_2_Odev_3());
+                    break;
+                case HaftaSecim.Ödev_4:
+                    // AltEkraniGoster(new Hafta_2_Odev_4());
+                    break;
+                case HaftaSecim.Ödev_5:
+                    // AltEkraniGoster(new Hafta_2_Odev_5());
+                    break;
+                case HaftaSecim.Ödev_6:
+                    // AltEkraniGoster(new Hafta_2_Odev_6());
+                    break;
+                case HaftaSecim.Ödev_7:
+                    // AltEkraniGoster(new Hafta_2_Odev_7());
+                    break;
+                case HaftaSecim.Ödev_8:
+                    // AltEkraniGoster(new Hafta_2_Odev_8());
+                    break;
+                case HaftaSecim.Ödev_9:
+                    // AltEkraniGoster(new Hafta_2_Odev_9());
+                    break;
+            }
             return;
         }
 
