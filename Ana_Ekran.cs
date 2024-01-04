@@ -89,5 +89,10 @@ namespace Görüntü_İşleme
             AltEkraniGoster(new Hafta_8());
             return;
         }
+
+        private void HaftaBirButonu_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
