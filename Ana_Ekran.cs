@@ -97,31 +97,33 @@ namespace Görüntü_İşleme
             switch (HaftaIkiSecimKutusu.SelectedItem)
             {
                 case HaftaSecim.Ödev_1:
-                    // AltEkraniGoster(new Hafta_2_Odev_1());
+                    AltEkraniGoster(new Hafta_2_Odev_1());
                     break;
                 case HaftaSecim.Ödev_2:
-                    // AltEkraniGoster(new Hafta_2_Odev_2());
+                    AltEkraniGoster(new Hafta_2_Odev_2());
                     break;
                 case HaftaSecim.Ödev_3:
                     // AltEkraniGoster(new Hafta_2_Odev_3());
-                    break;
+                    //break;
                 case HaftaSecim.Ödev_4:
                     // AltEkraniGoster(new Hafta_2_Odev_4());
-                    break;
+                    //break;
                 case HaftaSecim.Ödev_5:
                     // AltEkraniGoster(new Hafta_2_Odev_5());
-                    break;
+                    //break;
                 case HaftaSecim.Ödev_6:
                     // AltEkraniGoster(new Hafta_2_Odev_6());
-                    break;
+                    //break;
                 case HaftaSecim.Ödev_7:
                     // AltEkraniGoster(new Hafta_2_Odev_7());
-                    break;
+                    //break;
                 case HaftaSecim.Ödev_8:
                     // AltEkraniGoster(new Hafta_2_Odev_8());
-                    break;
+                    //break;
                 case HaftaSecim.Ödev_9:
                     // AltEkraniGoster(new Hafta_2_Odev_9());
+                    //break;
+                    MessageBox.Show("Daha eklenmedi.", "Hata!");
                     break;
             }
             return;
@@ -141,7 +143,7 @@ namespace Görüntü_İşleme
 
         private void HaftaBesButonu_Click(object sender, EventArgs e)
         {
-            AltEkraniGoster(new Hafta_5());
+            AltEkraniGoster(new Hafta_5_Odev_1());
             return;
         }
 

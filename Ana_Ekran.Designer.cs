@@ -310,6 +310,7 @@
             Controls.Add(HaftaIkiButonu);
             Controls.Add(HaftaBirButonu);
             Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "Ana_Ekran";
             Text = "Ana Ekran";

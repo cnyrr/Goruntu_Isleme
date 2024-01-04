@@ -66,7 +66,6 @@
             NormalButonu = new RadioButton();
             SigdirButonu = new RadioButton();
             DosyaAcici = new OpenFileDialog();
-            DosyaKaydedici = new SaveFileDialog();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Orjinal).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Degistirilmis).BeginInit();
@@ -421,7 +420,7 @@
             YakinlastirButonu.TabStop = true;
             YakinlastirButonu.Text = "Yakınlaştır";
             YakinlastirButonu.UseVisualStyleBackColor = true;
-            YakinlastirButonu.CheckedChanged += radioButton4_CheckedChanged;
+            YakinlastirButonu.CheckedChanged += OlceklemeRadyoButonlari_CheckedChanged;
             // 
             // MerkezleButonu
             // 
@@ -433,7 +432,7 @@
             MerkezleButonu.TabStop = true;
             MerkezleButonu.Text = "Merkezle";
             MerkezleButonu.UseVisualStyleBackColor = true;
-            MerkezleButonu.CheckedChanged += radioButton2_CheckedChanged;
+            MerkezleButonu.CheckedChanged += OlceklemeRadyoButonlari_CheckedChanged;
             // 
             // NormalButonu
             // 
@@ -445,7 +444,7 @@
             NormalButonu.TabStop = true;
             NormalButonu.Text = "Normal";
             NormalButonu.UseVisualStyleBackColor = true;
-            NormalButonu.CheckedChanged += radioButton1_CheckedChanged;
+            NormalButonu.CheckedChanged += OlceklemeRadyoButonlari_CheckedChanged;
             // 
             // SigdirButonu
             // 
@@ -457,18 +456,12 @@
             SigdirButonu.TabStop = true;
             SigdirButonu.Text = "Sığdır";
             SigdirButonu.UseVisualStyleBackColor = true;
-            SigdirButonu.CheckedChanged += radioButton3_CheckedChanged;
+            SigdirButonu.CheckedChanged += OlceklemeRadyoButonlari_CheckedChanged;
             // 
             // DosyaAcici
             // 
             DosyaAcici.Filter = "\"Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*\"";
             DosyaAcici.Title = "Resim Seç";
-            // 
-            // DosyaKaydedici
-            // 
-            DosyaKaydedici.DefaultExt = "\".PNG\"";
-            DosyaKaydedici.Filter = "\"Jpeg Resmi|*.jpg|Bitmap Resmi|*.bmp|Gif Resmi|*.gif|Png Resmi|*.png\"";
-            DosyaKaydedici.Title = "Resmi Kaydet";
             // 
             // Hafta_1
             // 
@@ -482,12 +475,12 @@
             Controls.Add(Orjinal);
             Controls.Add(menuStrip1);
             Controls.Add(IslemlerGrupKutusu);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip1;
             MaximizeBox = false;
             Name = "Hafta_1";
             ShowIcon = false;
-            Text = "Resim Düzenleme Uygulaması";
+            Text = "Hafta 1 Tek Parça";
             Load += Hafta_1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -544,6 +537,5 @@
         private Button MozaiklestirmeButonu;
         private ComboBox MozaiklemeListesi;
         private OpenFileDialog DosyaAcici;
-        private SaveFileDialog DosyaKaydedici;
     }
 }

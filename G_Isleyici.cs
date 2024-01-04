@@ -1,7 +1,13 @@
-﻿public class G_Isleyici
+﻿public class GIsleyici
 {
-    public static void ResimAc(ref OpenFileDialog DosyaAcici, PictureBox Secilen_Kutu)
+    public static void ResimAc(PictureBox Secilen_Kutu)
     {
+        OpenFileDialog DosyaAcici = new()
+        {
+            Filter = "Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*",
+            Title = "Resim Seç"
+        };
+
         // Don't do anything if user didn't pick a file.
         if (DosyaAcici.ShowDialog() == DialogResult.OK)
         {
@@ -23,10 +29,20 @@
             ResimDegistir(Secilen_Kutu, HafizadanResim);
         }
 
+        // Release resources.
+        DosyaAcici.Dispose();
+
         return;
     }
-    public static void ResimKaydet(ref SaveFileDialog DosyaKaydedici, PictureBox Secilen_Kutu)
+    public static void ResimKaydet(PictureBox Secilen_Kutu)
     {
+        SaveFileDialog DosyaKaydedici = new()
+        {
+            DefaultExt = "\".PNG\"",
+            Filter = "\"Jpeg Resmi|*.jpg|Bitmap Resmi|*.bmp|Gif Resmi|*.gif|Png Resmi|*.png\"",
+            Title = "Resmi Kaydet"
+        };
+
         // Don't do anything if user didn't pick a location.
         if (DosyaKaydedici.ShowDialog() == DialogResult.OK)
         {
@@ -48,6 +64,9 @@
             // Close the stream. 
             DosyaAkisi.Close();
         }
+
+        // Release resources.
+        DosyaKaydedici.Dispose();
 
         return;
     }
@@ -223,4 +242,57 @@
         return OrneklenmisResim;
     }
     */
+
+    public static Bitmap ParlaklikDegistir(PictureBox DegisecekKutu, int Parlaklik_Degeri)
+    {
+        // Create a Bitmap of original image to be used in function.
+        Bitmap DuzenlenecekResim = new(DegisecekKutu.Image);
+
+        // Create a Color to use in function.
+        Color yeni_renk;
+        int R, G, B;
+
+        // Define loop parameters outside for performance.
+        int x, y;
+        int x_limit = DegisecekKutu.Image.Width;
+        int y_limit = DegisecekKutu.Image.Height;
+        
+
+        for (y = 0; y < y_limit; y++)
+        {
+            for (x = 0; x < x_limit; x++)
+            {
+                // Get the pixel.
+                yeni_renk = DuzenlenecekResim.GetPixel(x, y);
+
+                // Get the altered values.
+                R = yeni_renk.R + Parlaklik_Degeri;
+                G = yeni_renk.G + Parlaklik_Degeri;
+                B = yeni_renk.B + Parlaklik_Degeri;
+
+                // Check if the values are in range.
+                if (R > 255) { R = 255; } else if (R < 0) { R = 0; }
+                if (G > 255) { G = 255; } else if (G < 0) { G = 0; }
+                if (B > 255) { B = 255; } else if (B < 0) { B = 0; }
+                
+                // Set the new pixel.
+                DuzenlenecekResim.SetPixel(x, y, Color.FromArgb(R, G, B));
+            }
+        }
+
+        // Return the dynamically allocated Bitmap.
+        return DuzenlenecekResim;
+    }
+
+    public static Bitmap HistogramOlustur(PictureBox KaynakKutu)
+    {
+        // Create a Bitmap of original image to be used in function.
+        Bitmap DuzenlenecekResim = new(KaynakKutu.Image);
+
+
+
+
+
+        return DuzenlenecekResim;
+    }
 }

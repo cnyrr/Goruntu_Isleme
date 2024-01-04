@@ -8,9 +8,28 @@ namespace Görüntü_İşleme
 {
     public partial class Hafta_1 : Form
     {
+        enum RenkSecimi
+        {
+            Kırmızı,
+            Yeşil,
+            Mavi,
+            Kırmızıdan_Gri,
+            Yeşilden_Gri,
+            Maviden_Gri,
+            Gri
+        }
         public Hafta_1()
         {
             InitializeComponent();
+            
+            // Renk Listesi tanımlamaları:
+            RenkveGriCevirListesi.Items.Add(RenkSecimi.Kırmızı);
+            RenkveGriCevirListesi.Items.Add(RenkSecimi.Yeşil);
+            RenkveGriCevirListesi.Items.Add(RenkSecimi.Mavi);
+            RenkveGriCevirListesi.Items.Add(RenkSecimi.Kırmızıdan_Gri);
+            RenkveGriCevirListesi.Items.Add(RenkSecimi.Yeşilden_Gri);
+            RenkveGriCevirListesi.Items.Add(RenkSecimi.Maviden_Gri);
+            RenkveGriCevirListesi.Items.Add(RenkSecimi.Gri);
         }
 
         private void Hafta_1_Load(object sender, EventArgs e)
@@ -25,16 +44,6 @@ namespace Görüntü_İşleme
             YakinlastirButonu.Checked = true;
         }
 
-        enum renk_secimi
-        {
-            kirmizi = 0,
-            yesil = 1,
-            mavi = 2,
-            kirmizidan_gri = 3,
-            yesilden_gri = 4,
-            maviden_gri = 5,
-            gri = 6
-        }
 
         enum bant_degisimi
         {
@@ -180,27 +189,27 @@ namespace Görüntü_İşleme
                 {
                     yeni_renk = DuzenlenecekResim.GetPixel(x, y);
 
-                    switch (RenkveGriCevirListesi.SelectedIndex)
+                    switch (RenkveGriCevirListesi.SelectedItem)
                     {
-                        case (int)renk_secimi.kirmizi:
+                        case RenkSecimi.Kırmızı:
                             yeni_renk = Color.FromArgb(yeni_renk.R, 0, 0);
                             break;
-                        case (int)renk_secimi.yesil:
+                        case RenkSecimi.Yeşil:
                             yeni_renk = Color.FromArgb(0, yeni_renk.G, 0);
                             break;
-                        case (int)renk_secimi.mavi:
+                        case RenkSecimi.Mavi:
                             yeni_renk = Color.FromArgb(0, 0, yeni_renk.B);
                             break;
-                        case (int)renk_secimi.kirmizidan_gri:
+                        case RenkSecimi.Kırmızıdan_Gri:
                             yeni_renk = Color.FromArgb(yeni_renk.R, yeni_renk.R, yeni_renk.R);
                             break;
-                        case (int)renk_secimi.yesilden_gri:
+                        case RenkSecimi.Yeşilden_Gri:
                             yeni_renk = Color.FromArgb(yeni_renk.G, yeni_renk.G, yeni_renk.G);
                             break;
-                        case (int)renk_secimi.maviden_gri:
+                        case RenkSecimi.Maviden_Gri:
                             yeni_renk = Color.FromArgb(yeni_renk.B, yeni_renk.B, yeni_renk.B);
                             break;
-                        case (int)renk_secimi.gri:
+                        case RenkSecimi.Gri:
                             gecici_deger = (yeni_renk.R + yeni_renk.G + yeni_renk.B) / 3;
                             yeni_renk = Color.FromArgb(gecici_deger, gecici_deger, gecici_deger);
                             break;
@@ -386,18 +395,18 @@ namespace Görüntü_İşleme
 
         private void ResmiKaydetButonu_Click(object sender, EventArgs e)
         {
-            G_Isleyici.ResimKaydet(ref DosyaKaydedici, Degistirilmis);
+            GIsleyici.ResimKaydet(Degistirilmis);
             return;
         }
         private void ResimSecButonu_Click(object sender, EventArgs e)
         {
-            G_Isleyici.ResimAc(ref DosyaAcici, Orjinal);
+            GIsleyici.ResimAc(Orjinal);
             ButonlariAktifEt();
             return;
         }
         private void NegatifAlmaButonu_Click(object sender, EventArgs e)
         {
-            G_Isleyici.ResimDegistir(Degistirilmis, G_Isleyici.ResminNegatifiniAl(Orjinal));
+            GIsleyici.ResimDegistir(Degistirilmis, GIsleyici.ResminNegatifiniAl(Orjinal));
             ButonlariAktifEt();
             return;
         }
@@ -405,7 +414,7 @@ namespace Görüntü_İşleme
         {
             int skala_boyutu = (int)GriSkalaDegerKutusu.Value;
 
-            G_Isleyici.ResimDegistir(Orjinal, G_Isleyici.GriSkalaOlustur(skala_boyutu));
+            GIsleyici.ResimDegistir(Orjinal, GIsleyici.GriSkalaOlustur(skala_boyutu));
             ButonlariAktifEt();
             return;
         }
@@ -413,7 +422,7 @@ namespace Görüntü_İşleme
         {
             int daire_cozunurluk = (int)DaireCozunurlukDegerKutusu.Value;
 
-            G_Isleyici.ResimDegistir(Orjinal, G_Isleyici.DaireOlustur(daire_cozunurluk));
+            GIsleyici.ResimDegistir(Orjinal, GIsleyici.DaireOlustur(daire_cozunurluk));
             ButonlariAktifEt();
             return;
         }
@@ -430,33 +439,28 @@ namespace Görüntü_İşleme
             return;
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void OlceklemeRadyoButonlari_CheckedChanged(object sender, EventArgs e)
         {
-            Degistirilmis.SizeMode = PictureBoxSizeMode.Normal;
+            if (NormalButonu.Checked)
+            {
+                Degistirilmis.SizeMode = PictureBoxSizeMode.Normal;
+            }
+            else if (YakinlastirButonu.Checked)
+            {
+                Degistirilmis.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+            else if (SigdirButonu.Checked)
+            {
+                Degistirilmis.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            else
+            {
+                Degistirilmis.SizeMode = PictureBoxSizeMode.CenterImage;
+            }
 
             return;
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            Degistirilmis.SizeMode = PictureBoxSizeMode.CenterImage;
-
-            return;
-        }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-            Degistirilmis.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            return;
-        }
-
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
-            Degistirilmis.SizeMode = PictureBoxSizeMode.Zoom;
-
-            return;
-        }
 
         private void BantDegisimButonu_Click(object sender, EventArgs e)
         {
