@@ -1,5 +1,6 @@
-﻿public class GIsleyici
+﻿public class GI
 {
+    public enum RenkKanallari { Kirmizi, Yesil, Mavi, Gri, TumKanallar};
     public static void ResimAc(PictureBox Secilen_Kutu)
     {
         OpenFileDialog DosyaAcici = new()
@@ -283,16 +284,164 @@
         // Return the dynamically allocated Bitmap.
         return DuzenlenecekResim;
     }
+    public static Bitmap HistogramOlustur(PictureBox KaynakKutu, PictureBox HedefKutu, RenkKanallari KanalSecimi)
+    {
 
-    public static Bitmap HistogramOlustur(PictureBox KaynakKutu)
+        // Create a Bitmap of original image to be used in function.
+        Bitmap DuzenlenecekResim = new(KaynakKutu.Image);
+        Bitmap HistogramResmi = new(HedefKutu.Width, HedefKutu.Height);
+
+        // Create a Color to use in function.
+        Color yeni_renk;
+
+        // Various definitions.
+        int[] ayni_ton_piksel_sayisi = new int[256];
+        int histogram_yuksekligi = 0;
+        
+
+        // Iterate every pixel on the image and get the grey tone amount.
+        for (int y = 0; y < DuzenlenecekResim.Height; y++)
+        {
+            for (int x = 0; x < DuzenlenecekResim.Width; x++)
+            {
+                yeni_renk = DuzenlenecekResim.GetPixel(x, y);
+
+                switch (KanalSecimi)
+                {
+                    case RenkKanallari.Kirmizi:
+                        ayni_ton_piksel_sayisi[yeni_renk.R]++;
+                        break;
+                    case RenkKanallari.Yesil:
+                        ayni_ton_piksel_sayisi[yeni_renk.G]++;
+                        break;
+                    case RenkKanallari.Mavi:
+                        ayni_ton_piksel_sayisi[yeni_renk.B]++;
+                        break;
+                    case RenkKanallari.Gri:
+                        ayni_ton_piksel_sayisi[(yeni_renk.R + yeni_renk.G + yeni_renk.B) / 3]++;
+                        break;
+                }
+            }
+        }
+
+        /*
+        // Iterate over indices to find our histograms height.
+        for (int x = 1; x < 255; x++)
+        {
+            if (ayni_ton_piksel_sayisi[x] > histogram_yuksekligi)
+            {
+                histogram_yuksekligi = ayni_ton_piksel_sayisi[x];
+            }
+        }
+        */
+
+        // Define our pens and drawboard.
+        Graphics HistogramCizimi = Graphics.FromImage(HistogramResmi);
+        Pen OlcekKalemi = new(Color.Red, 1);
+        Pen Degerkalemi = new(Color.Black, 1);
+
+        // Define our scales.
+        double OlcekY = 8192 / HedefKutu.Height; // 500 was histogram_yuksekligi.
+        double OlcekX = HedefKutu.Width / 256;
+
+        // Draw the histogram.
+        for (int x = 0; x < 256; x++)
+        {
+            if (x % 63 == 0)
+            {
+                // Red lines every 64 pixels.
+                HistogramCizimi.DrawLine(OlcekKalemi, (int) (x * OlcekX), 0, (int)(x * OlcekX), HedefKutu.Width);
+            }
+
+            // Actual histogram drawing.
+            HistogramCizimi.DrawLine(Degerkalemi, (int)(x * OlcekX), HedefKutu.Height, (int)(x * OlcekX), HedefKutu.Height - (int)(ayni_ton_piksel_sayisi[x] / OlcekY));         
+        }
+
+        // Free the resources.
+        HistogramCizimi.Dispose();
+        OlcekKalemi.Dispose();
+        Degerkalemi.Dispose();
+
+        return HistogramResmi;
+    }
+    public static Bitmap ResmiEsikle(PictureBox KaynakKutu, int kirmizi_taban_esik, int kirmizi_tavan_esik
+                                                          , int yesil_taban_esik, int yesil_tavan_esik
+                                                          , int mavi_taban_esik, int mavi_tavan_esik      
+                                                          , RenkKanallari KanalSecimi)
     {
         // Create a Bitmap of original image to be used in function.
         Bitmap DuzenlenecekResim = new(KaynakKutu.Image);
 
+        // Create a Color to use in function.
+        Color yeni_renk;
+
+        // Define loop parameters outside for performance.
+        int x, y;
+        int x_limit = KaynakKutu.Image.Width;
+        int y_limit = KaynakKutu.Image.Height;
+        int R, G, B;
 
 
+        for (y = 0; y < y_limit; y++)
+        {
+            for (x = 0; x < x_limit; x++)
+            {
+                // Get the pixel.
+                yeni_renk = DuzenlenecekResim.GetPixel(x, y);
 
+                R = yeni_renk.R;
+                G = yeni_renk.G;
+                B = yeni_renk.B;
 
+                switch (KanalSecimi)
+                {
+                    case RenkKanallari.Kirmizi:
+                        // Set the channel to 0 if its not within thresholds.
+                        if (yeni_renk.R < kirmizi_taban_esik || yeni_renk.R > kirmizi_tavan_esik) R = 0;
+
+                        // Set the pixel black if its not within thresholds.
+                        DuzenlenecekResim.SetPixel(x, y, Color.FromArgb(R, G, B));
+                        break;
+
+                    case RenkKanallari.Yesil:
+                        // Set the channel to 0 if its not within thresholds.
+                        if (yeni_renk.G < kirmizi_taban_esik || yeni_renk.G > kirmizi_tavan_esik) G = 0;
+
+                        // Set the pixel black if its not within thresholds.
+                        DuzenlenecekResim.SetPixel(x, y, Color.FromArgb(R, G, B));
+                        break;
+
+                    case RenkKanallari.Mavi:
+                        // Set the channel to 0 if its not within thresholds.
+                        if (yeni_renk.B < kirmizi_taban_esik || yeni_renk.B > kirmizi_tavan_esik) B = 0;
+
+                        // Set the pixel black if its not within thresholds.
+                        DuzenlenecekResim.SetPixel(x, y, Color.FromArgb(R, G, B));
+                        break;
+
+                    case RenkKanallari.Gri:
+                        // Assuming R = G = B.
+                        if (yeni_renk.R < kirmizi_taban_esik || yeni_renk.R > kirmizi_tavan_esik) R = 0;
+
+                        // Set the pixel black if its not within thresholds.
+                        DuzenlenecekResim.SetPixel(x, y, Color.FromArgb(R, R, R));
+                        break;
+
+                    case RenkKanallari.TumKanallar:
+
+                        // Compare against thresholds then set the color black if its not within thresholds.
+                        if (yeni_renk.R < kirmizi_taban_esik || yeni_renk.R > kirmizi_tavan_esik) R = 0;
+                        if (yeni_renk.G < yesil_taban_esik || yeni_renk.G > yesil_tavan_esik) G = 0;
+                        if (yeni_renk.B < mavi_taban_esik || yeni_renk.B > mavi_tavan_esik) B = 0;
+
+                        // Set the pixel with new values.
+                        DuzenlenecekResim.SetPixel(x, y, Color.FromArgb(R, G, B));
+                        break;
+                }
+            }
+        }
+
+        // Return the dynamically allocated Bitmap.
         return DuzenlenecekResim;
     }
 }

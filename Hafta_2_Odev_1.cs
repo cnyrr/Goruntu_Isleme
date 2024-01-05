@@ -19,31 +19,34 @@ namespace Görüntü_İşleme
 
         private void ResimAcButonu_Click(object sender, EventArgs e)
         {
-            GIsleyici.ResimAc(Orjinal);
+            GI.ResimAc(Orjinal);
 
-            GIsleyici.ResimDegistir(Degistirilmis, (Image)Orjinal.Image.Clone());
+            if (Orjinal.Image != null)
+            {
+                GI.ResimDegistir(Degistirilmis, (Image)Orjinal.Image.Clone());
 
-            // Enable stuff.
-            ResmiKaydetButonu.Enabled = true;
-            ParlaklikBar.Enabled = true;
+                // Enable stuff.
+                ResmiKaydetButonu.Enabled = true;
+                ParlaklikBar.Enabled = true;
 
-            // Reset bar.
-            ParlaklikBar.Value = 0;
-            ParlaklikMetin.Text = "Parlaklik Degişimi: 0";
+                // Reset bar.
+                ParlaklikBar.Value = 0;
+                ParlaklikMetin.Text = "Parlaklik Degişimi: 0";
+            }
 
             return;
         }
 
         private void ResmiKaydetButonu_Click(object sender, EventArgs e)
         {
-            GIsleyici.ResimKaydet(Degistirilmis);
+            GI.ResimKaydet(Degistirilmis);
             return;
         }
 
         private void ParlaklikBar_MouseUp(object sender, MouseEventArgs e)
         {
             ParlaklikMetin.Text = "Parlaklik Degişimi: " + ParlaklikBar.Value.ToString();
-            GIsleyici.ResimDegistir(Degistirilmis, GIsleyici.ParlaklikDegistir(Orjinal, ParlaklikBar.Value));
+            GI.ResimDegistir(Degistirilmis, GI.ParlaklikDegistir(Orjinal, ParlaklikBar.Value));
             
             return;
         }

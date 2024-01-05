@@ -395,18 +395,18 @@ namespace Görüntü_İşleme
 
         private void ResmiKaydetButonu_Click(object sender, EventArgs e)
         {
-            GIsleyici.ResimKaydet(Degistirilmis);
+            GI.ResimKaydet(Degistirilmis);
             return;
         }
         private void ResimSecButonu_Click(object sender, EventArgs e)
         {
-            GIsleyici.ResimAc(Orjinal);
+            GI.ResimAc(Orjinal);
             ButonlariAktifEt();
             return;
         }
         private void NegatifAlmaButonu_Click(object sender, EventArgs e)
         {
-            GIsleyici.ResimDegistir(Degistirilmis, GIsleyici.ResminNegatifiniAl(Orjinal));
+            GI.ResimDegistir(Degistirilmis, GI.ResminNegatifiniAl(Orjinal));
             ButonlariAktifEt();
             return;
         }
@@ -414,7 +414,7 @@ namespace Görüntü_İşleme
         {
             int skala_boyutu = (int)GriSkalaDegerKutusu.Value;
 
-            GIsleyici.ResimDegistir(Orjinal, GIsleyici.GriSkalaOlustur(skala_boyutu));
+            GI.ResimDegistir(Orjinal, GI.GriSkalaOlustur(skala_boyutu));
             ButonlariAktifEt();
             return;
         }
@@ -422,7 +422,7 @@ namespace Görüntü_İşleme
         {
             int daire_cozunurluk = (int)DaireCozunurlukDegerKutusu.Value;
 
-            GIsleyici.ResimDegistir(Orjinal, GIsleyici.DaireOlustur(daire_cozunurluk));
+            GI.ResimDegistir(Orjinal, GI.DaireOlustur(daire_cozunurluk));
             ButonlariAktifEt();
             return;
         }

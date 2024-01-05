@@ -226,7 +226,9 @@ namespace Görüntü_İşleme
 
 
         //2.sorunun cevabı
+#pragma warning disable CS0414 // The field 'Hafta_5.alpha' is assigned but its value is never used
         int red = 0, blue = 0, green = 0, alpha = 0;
+#pragma warning restore CS0414 // The field 'Hafta_5.alpha' is assigned but its value is never used
         int blurPixelCount = 0;
         private void button3_Click(object sender, EventArgs e)
         {

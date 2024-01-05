@@ -143,7 +143,7 @@ namespace Görüntü_İşleme
 
         private void HaftaBesButonu_Click(object sender, EventArgs e)
         {
-            AltEkraniGoster(new Hafta_5_Odev_1());
+            //AltEkraniGoster(new Hafta_5_Odev_1());
             return;
         }
 
