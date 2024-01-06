@@ -106,8 +106,8 @@ namespace Görüntü_İşleme
                     AltEkraniGoster(new Hafta_2_Odev_3());
                     break;
                 case HaftaSecim.Ödev_4:
-                    // AltEkraniGoster(new Hafta_2_Odev_4());
-                    //break;
+                    AltEkraniGoster(new Hafta_2_Odev_4());
+                    break;
                 case HaftaSecim.Ödev_5:
                     // AltEkraniGoster(new Hafta_2_Odev_5());
                     //break;

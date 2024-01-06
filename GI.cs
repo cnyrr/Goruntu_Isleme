@@ -90,7 +90,7 @@
         int max_deger = 0;
 
         // Iterate over indices to find the highest value.
-        for (int x = 0; x < 255; x++)
+        for (int x = 0; x < 256; x++)
         {
             if (sirasiz_dizi[x] > max_deger)
             {
@@ -349,19 +349,19 @@
         int[] piksel_dagilimi = DagilimHesapla(KaynakKutu, KanalSecimi);
         int histogram_yuksekligi = DiziMaxDegerhesapla(piksel_dagilimi);
 
-        // Define our pens and drawboard.
-        Graphics HistogramCizimi = Graphics.FromImage(HistogramResmi);
-        Pen OlcekKalemi = new(Color.Red, 1);
-        Pen Degerkalemi = new(Color.Black, 1);
-
         // Define our scales.
         double OlcekY = histogram_yuksekligi / HedefKutu.Height;
         double OlcekX = HedefKutu.Width / 256;
 
+        // Define our pens and drawboard.
+        Graphics HistogramCizimi = Graphics.FromImage(HistogramResmi);
+        Pen OlcekKalemi = new(Color.Red, (int)(OlcekX - 1) + 1);
+        Pen Degerkalemi = new(Color.Black, (int)(OlcekX - 1) + 1);
+
         // Draw the histogram.
         for (int x = 0; x < 256; x++)
         {
-            if ((x + 1) % 64 == 0)
+            if ( x % 64 == 0)
             {
                 // Red lines every 64 pixels.
                 HistogramCizimi.DrawLine(OlcekKalemi, (int) (x * OlcekX), 0, (int)(x * OlcekX), HedefKutu.Width);
@@ -389,19 +389,19 @@
         int[] piksel_dagilimi = DagilimHesapla(KaynakKutu, KanalSecimi);
         int histogram_yuksekligi= DiziMaxDegerhesapla(DagilimHesapla(YukseklikBaz, KanalSecimi));
 
-        // Define our pens and drawboard.
-        Graphics HistogramCizimi = Graphics.FromImage(HistogramResmi);
-        Pen OlcekKalemi = new(Color.Red, 1);
-        Pen Degerkalemi = new(Color.Black, 1);
-
         // Define our scales.
         double OlcekY = histogram_yuksekligi / HedefKutu.Height;
         double OlcekX = HedefKutu.Width / 256;
 
+        // Define our pens and drawboard.
+        Graphics HistogramCizimi = Graphics.FromImage(HistogramResmi);
+        Pen OlcekKalemi = new(Color.Red, (int)(OlcekX - 1) + 1);
+        Pen Degerkalemi = new(Color.Black, (int)(OlcekX -1) + 1);
+
         // Draw the histogram.
         for (int x = 0; x < 256; x++)
         {
-            if ((x + 1) % 64 == 0)
+            if ( x % 64 == 0)
             {
                 // Red lines every 64 pixels.
                 HistogramCizimi.DrawLine(OlcekKalemi, (int)(x * OlcekX), 0, (int)(x * OlcekX), HedefKutu.Width);
@@ -507,7 +507,6 @@
         Color yeni_renk;
         int R, G, B;
 
-        // TODO: ADD GREYSCALE SUPPORT.
         for (int y = 0; y < DuzenlenecekResim.Height; y++)
         {
             for (int x = 0; x < DuzenlenecekResim.Width; x++)
@@ -528,6 +527,14 @@
                         if (B > 255) { B = 255; } else if (B < 0) { B = 0; }
 
                         DuzenlenecekResim.SetPixel(x, y, Color.FromArgb(R, G, B));
+                        break;
+                    case RenkKanallari.Gri:
+                        R = (yeni_renk.R + yeni_renk.G + yeni_renk.B) / 3;
+                        R = ((R - orjinal_aralik_min) * (yeni_aralik_max - yeni_aralik_min) / (orjinal_aralik_max - orjinal_aralik_min)) + yeni_aralik_min;
+
+                        if (R > 255) { R = 255; } else if (R < 0) { R = 0; }
+
+                        DuzenlenecekResim.SetPixel(x, y, Color.FromArgb(R, R, R));
                         break;
                 }
             }
