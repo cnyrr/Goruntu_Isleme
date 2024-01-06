@@ -86,7 +86,6 @@
             OrjinalHistogramR.Location = new Point(274, 12);
             OrjinalHistogramR.Name = "OrjinalHistogramR";
             OrjinalHistogramR.Size = new Size(256, 256);
-            OrjinalHistogramR.SizeMode = PictureBoxSizeMode.CenterImage;
             OrjinalHistogramR.TabIndex = 1;
             OrjinalHistogramR.TabStop = false;
             // 
@@ -309,7 +308,6 @@
             DegistirilmisHistogramR.Location = new Point(274, 274);
             DegistirilmisHistogramR.Name = "DegistirilmisHistogramR";
             DegistirilmisHistogramR.Size = new Size(256, 256);
-            DegistirilmisHistogramR.SizeMode = PictureBoxSizeMode.CenterImage;
             DegistirilmisHistogramR.TabIndex = 11;
             DegistirilmisHistogramR.TabStop = false;
             // 
@@ -319,7 +317,6 @@
             OrjinalHistogramG.Location = new Point(536, 12);
             OrjinalHistogramG.Name = "OrjinalHistogramG";
             OrjinalHistogramG.Size = new Size(256, 256);
-            OrjinalHistogramG.SizeMode = PictureBoxSizeMode.CenterImage;
             OrjinalHistogramG.TabIndex = 12;
             OrjinalHistogramG.TabStop = false;
             // 
@@ -329,7 +326,6 @@
             OrjinalHistogramB.Location = new Point(798, 12);
             OrjinalHistogramB.Name = "OrjinalHistogramB";
             OrjinalHistogramB.Size = new Size(256, 256);
-            OrjinalHistogramB.SizeMode = PictureBoxSizeMode.CenterImage;
             OrjinalHistogramB.TabIndex = 13;
             OrjinalHistogramB.TabStop = false;
             // 
@@ -339,7 +335,6 @@
             DegistirilmisHistogramG.Location = new Point(536, 274);
             DegistirilmisHistogramG.Name = "DegistirilmisHistogramG";
             DegistirilmisHistogramG.Size = new Size(256, 256);
-            DegistirilmisHistogramG.SizeMode = PictureBoxSizeMode.CenterImage;
             DegistirilmisHistogramG.TabIndex = 14;
             DegistirilmisHistogramG.TabStop = false;
             // 
@@ -349,7 +344,6 @@
             DegistirilmisHistogramB.Location = new Point(798, 274);
             DegistirilmisHistogramB.Name = "DegistirilmisHistogramB";
             DegistirilmisHistogramB.Size = new Size(256, 256);
-            DegistirilmisHistogramB.SizeMode = PictureBoxSizeMode.CenterImage;
             DegistirilmisHistogramB.TabIndex = 15;
             DegistirilmisHistogramB.TabStop = false;
             // 

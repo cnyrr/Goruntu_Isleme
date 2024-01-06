@@ -60,28 +60,32 @@ namespace Görüntü_İşleme
         private void ResimEsikleButonu_Click(object sender, EventArgs e)
         {
             // Determine which mode to run.
-            if (RenkModuKutusu.Checked)
-            {
-                // Create the new image.
-                GI.ResimDegistir(Degistirilmis, GI.ResmiEsikle(Orjinal, GriveRTabanEsikBar.Value, GriveRTavanEsikBar.Value
-                                                                                    , GTabanEsikBar.Value,      GTavanEsikBar.Value
-                                                                                    , BTabanEsikBar.Value,      BTavanEsikBar.Value
-                                                                                    , GI.RenkKanallari.TumKanallar));
+            switch (RenkModuKutusu.Checked)
+            { 
+                case true: // Color mode.
+                
+                    // Create the new image.
+                    GI.ResimDegistir(Degistirilmis, GI.ResmiEsikle(Orjinal, GriveRTabanEsikBar.Value, GriveRTavanEsikBar.Value
+                                                                          , GTabanEsikBar.Value,      GTavanEsikBar.Value
+                                                                          , BTabanEsikBar.Value,      BTavanEsikBar.Value
+                                                                          , GI.RenkKanallari.TumKanallar));
 
-                // Create the histograms.
-                GI.ResimDegistir(DegistirilmisHistogramR, GI.HistogramOlustur(Degistirilmis, DegistirilmisHistogramR, GI.RenkKanallari.Kirmizi));
-                GI.ResimDegistir(DegistirilmisHistogramG, GI.HistogramOlustur(Degistirilmis, DegistirilmisHistogramG, GI.RenkKanallari.Yesil));
-                GI.ResimDegistir(DegistirilmisHistogramB, GI.HistogramOlustur(Degistirilmis, DegistirilmisHistogramB, GI.RenkKanallari.Mavi));
-            }
-            else
-            {
-                // Create the new image.
-                GI.ResimDegistir(Degistirilmis, GI.ResmiEsikle(Orjinal, GriveRTabanEsikBar.Value, GriveRTavanEsikBar.Value
-                                                                                    , GriveRTabanEsikBar.Value, GriveRTavanEsikBar.Value
-                                                                                    , GriveRTabanEsikBar.Value, GriveRTavanEsikBar.Value
-                                                                                    , GI.RenkKanallari.Gri));
-                // Create the histogram.
-                GI.ResimDegistir(DegistirilmisHistogramR, GI.HistogramOlustur(Degistirilmis, DegistirilmisHistogramR, GI.RenkKanallari.Gri));
+                    // Create the histograms.
+                    GI.ResimDegistir(DegistirilmisHistogramR, GI.KiyasHistogramOlustur(Degistirilmis, DegistirilmisHistogramR, Orjinal, GI.RenkKanallari.Kirmizi));
+                    GI.ResimDegistir(DegistirilmisHistogramG, GI.KiyasHistogramOlustur(Degistirilmis, DegistirilmisHistogramG, Orjinal, GI.RenkKanallari.Yesil));
+                    GI.ResimDegistir(DegistirilmisHistogramB, GI.KiyasHistogramOlustur(Degistirilmis, DegistirilmisHistogramB, Orjinal, GI.RenkKanallari.Mavi));
+                    break;
+                case false: // Grey mode.
+                    
+                    // Create the new image.
+                    GI.ResimDegistir(Degistirilmis, GI.ResmiEsikle(Orjinal, GriveRTabanEsikBar.Value, GriveRTavanEsikBar.Value
+                                                                          , GriveRTabanEsikBar.Value, GriveRTavanEsikBar.Value
+                                                                          , GriveRTabanEsikBar.Value, GriveRTavanEsikBar.Value
+                                                                          , GI.RenkKanallari.Gri));
+
+                    // Create the histogram.
+                    GI.ResimDegistir(DegistirilmisHistogramR, GI.KiyasHistogramOlustur(Degistirilmis, DegistirilmisHistogramR, Orjinal, GI.RenkKanallari.Gri));
+                    break;
             }
 
             return;
@@ -145,7 +149,7 @@ namespace Görüntü_İşleme
                 if (Orjinal.Image != null)
                 {
                     GI.ResimDegistir(OrjinalHistogramR, GI.HistogramOlustur(Orjinal, OrjinalHistogramR, GI.RenkKanallari.Gri));
-                    GI.ResimDegistir(DegistirilmisHistogramR, GI.HistogramOlustur(Degistirilmis, DegistirilmisHistogramR, GI.RenkKanallari.Gri));
+                    GI.ResimDegistir(DegistirilmisHistogramR, GI.KiyasHistogramOlustur(Degistirilmis, DegistirilmisHistogramR, Orjinal, GI.RenkKanallari.Gri));
                 }
             }
             return;

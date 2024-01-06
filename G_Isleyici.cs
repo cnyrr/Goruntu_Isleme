@@ -84,6 +84,62 @@
 
         return;
     }
+    public static int DiziMaxDegerhesapla(int[] sirasiz_dizi)
+    {
+        // Variable to store the highest value.
+        int max_deger = 0;
+
+        // Iterate over indices to find the highest value.
+        for (int x = 0; x < 255; x++)
+        {
+            if (sirasiz_dizi[x] > max_deger)
+            {
+                max_deger = sirasiz_dizi[x];
+            }
+        }
+
+        return max_deger;
+    }
+    public static int[] DagilimHesapla(PictureBox KaynakKutu, RenkKanallari KanalSecimi)
+    {
+        // Create a Bitmap of original image to be used in function.
+        Bitmap DuzenlenecekResim = new(KaynakKutu.Image);
+
+        // Declare a color to use in function.
+        Color yeni_renk;
+
+        // Array to store pixel distribution.
+        int[] piksel_dagilimi = new int[256];
+
+        // Iterate every pixel on the image and find pixel distribution.
+        for (int y = 0; y < DuzenlenecekResim.Height; y++)
+        {
+            for (int x = 0; x < DuzenlenecekResim.Width; x++)
+            {
+                yeni_renk = DuzenlenecekResim.GetPixel(x, y);
+
+                switch (KanalSecimi)
+                {
+                    case RenkKanallari.Kirmizi:
+                        piksel_dagilimi[yeni_renk.R]++;
+                        break;
+                    case RenkKanallari.Yesil:
+                        piksel_dagilimi[yeni_renk.G]++;
+                        break;
+                    case RenkKanallari.Mavi:
+                        piksel_dagilimi[yeni_renk.B]++;
+                        break;
+                    case RenkKanallari.Gri:
+                        piksel_dagilimi[(yeni_renk.R + yeni_renk.G + yeni_renk.B) / 3]++;
+                        break;
+                }
+            }
+        }
+        // Free resoures.
+        DuzenlenecekResim.Dispose();
+
+        return piksel_dagilimi;
+    }
     public static Bitmap ResminNegatifiniAl(PictureBox Orjinal)
     {
         // Create a Bitmap of original image to be used in function.
@@ -286,54 +342,12 @@
     }
     public static Bitmap HistogramOlustur(PictureBox KaynakKutu, PictureBox HedefKutu, RenkKanallari KanalSecimi)
     {
-
-        // Create a Bitmap of original image to be used in function.
-        Bitmap DuzenlenecekResim = new(KaynakKutu.Image);
+        // Create a bitmap to pass into graphics object.
         Bitmap HistogramResmi = new(HedefKutu.Width, HedefKutu.Height);
 
-        // Create a Color to use in function.
-        Color yeni_renk;
-
         // Various definitions.
-        int[] ayni_ton_piksel_sayisi = new int[256];
-        int histogram_yuksekligi = 0;
-        
-
-        // Iterate every pixel on the image and get the grey tone amount.
-        for (int y = 0; y < DuzenlenecekResim.Height; y++)
-        {
-            for (int x = 0; x < DuzenlenecekResim.Width; x++)
-            {
-                yeni_renk = DuzenlenecekResim.GetPixel(x, y);
-
-                switch (KanalSecimi)
-                {
-                    case RenkKanallari.Kirmizi:
-                        ayni_ton_piksel_sayisi[yeni_renk.R]++;
-                        break;
-                    case RenkKanallari.Yesil:
-                        ayni_ton_piksel_sayisi[yeni_renk.G]++;
-                        break;
-                    case RenkKanallari.Mavi:
-                        ayni_ton_piksel_sayisi[yeni_renk.B]++;
-                        break;
-                    case RenkKanallari.Gri:
-                        ayni_ton_piksel_sayisi[(yeni_renk.R + yeni_renk.G + yeni_renk.B) / 3]++;
-                        break;
-                }
-            }
-        }
-
-        /*
-        // Iterate over indices to find our histograms height.
-        for (int x = 1; x < 255; x++)
-        {
-            if (ayni_ton_piksel_sayisi[x] > histogram_yuksekligi)
-            {
-                histogram_yuksekligi = ayni_ton_piksel_sayisi[x];
-            }
-        }
-        */
+        int[] piksel_dagilimi = DagilimHesapla(KaynakKutu, KanalSecimi);
+        int histogram_yuksekligi = DiziMaxDegerhesapla(piksel_dagilimi);
 
         // Define our pens and drawboard.
         Graphics HistogramCizimi = Graphics.FromImage(HistogramResmi);
@@ -341,7 +355,7 @@
         Pen Degerkalemi = new(Color.Black, 1);
 
         // Define our scales.
-        double OlcekY = 8192 / HedefKutu.Height; // 500 was histogram_yuksekligi.
+        double OlcekY = histogram_yuksekligi / HedefKutu.Height;
         double OlcekX = HedefKutu.Width / 256;
 
         // Draw the histogram.
@@ -354,7 +368,47 @@
             }
 
             // Actual histogram drawing.
-            HistogramCizimi.DrawLine(Degerkalemi, (int)(x * OlcekX), HedefKutu.Height, (int)(x * OlcekX), HedefKutu.Height - (int)(ayni_ton_piksel_sayisi[x] / OlcekY));         
+            HistogramCizimi.DrawLine(Degerkalemi, (int)(x * OlcekX), HedefKutu.Height, (int)(x * OlcekX), HedefKutu.Height - (int)(piksel_dagilimi[x] / OlcekY));         
+        }
+
+        // Free the resources.
+        HistogramCizimi.Dispose();
+        OlcekKalemi.Dispose();
+        Degerkalemi.Dispose();
+
+        // Return dynamically allocated bitmap.
+        return HistogramResmi;
+    }
+    
+    public static Bitmap KiyasHistogramOlustur(PictureBox KaynakKutu, PictureBox HedefKutu, PictureBox YukseklikBaz, RenkKanallari KanalSecimi)
+    {
+        // Create a Bitmap of original image to be used in function.
+        Bitmap HistogramResmi = new(HedefKutu.Width, HedefKutu.Height);
+
+        // Various definitions.
+        int[] piksel_dagilimi = DagilimHesapla(KaynakKutu, KanalSecimi);
+        int histogram_yuksekligi= DiziMaxDegerhesapla(DagilimHesapla(YukseklikBaz, KanalSecimi));
+
+        // Define our pens and drawboard.
+        Graphics HistogramCizimi = Graphics.FromImage(HistogramResmi);
+        Pen OlcekKalemi = new(Color.Red, 1);
+        Pen Degerkalemi = new(Color.Black, 1);
+
+        // Define our scales.
+        double OlcekY = histogram_yuksekligi / HedefKutu.Height;
+        double OlcekX = HedefKutu.Width / 256;
+
+        // Draw the histogram.
+        for (int x = 0; x < 256; x++)
+        {
+            if ((x + 1) % 64 == 0)
+            {
+                // Red lines every 64 pixels.
+                HistogramCizimi.DrawLine(OlcekKalemi, (int)(x * OlcekX), 0, (int)(x * OlcekX), HedefKutu.Width);
+            }
+
+            // Actual histogram drawing.
+            HistogramCizimi.DrawLine(Degerkalemi, (int)(x * OlcekX), HedefKutu.Height, (int)(x * OlcekX), HedefKutu.Height - (int)(piksel_dagilimi[x] / OlcekY));
         }
 
         // Free the resources.
