@@ -419,8 +419,8 @@
         return HistogramResmi;
     }
     public static Bitmap ResmiEsikle(PictureBox KaynakKutu, int kirmizi_taban_esik, int kirmizi_tavan_esik
-                                                          , int yesil_taban_esik, int yesil_tavan_esik
-                                                          , int mavi_taban_esik, int mavi_tavan_esik      
+                                                          , int yesil_taban_esik,   int yesil_tavan_esik
+                                                          , int mavi_taban_esik,    int mavi_tavan_esik      
                                                           , RenkKanallari KanalSecimi)
     {
         // Create a Bitmap of original image to be used in function.
@@ -496,6 +496,44 @@
         }
 
         // Return the dynamically allocated Bitmap.
+        return DuzenlenecekResim;
+    }
+    public static Bitmap KarsitlikDegistir(PictureBox KaynakKutu, int orjinal_aralik_min, int orjinal_aralik_max, int yeni_aralik_min, int yeni_aralik_max, RenkKanallari KanalSecimi)
+    {
+        // Create a Bitmap of original image to be used in function.
+        Bitmap DuzenlenecekResim = new(KaynakKutu.Image);
+
+        // Declare variables to use in the function.
+        Color yeni_renk;
+        int R, G, B;
+
+        // TODO: ADD GREYSCALE SUPPORT.
+        for (int y = 0; y < DuzenlenecekResim.Height; y++)
+        {
+            for (int x = 0; x < DuzenlenecekResim.Width; x++)
+            {
+                yeni_renk = DuzenlenecekResim.GetPixel(x, y);
+
+                switch (KanalSecimi)
+                {
+                    // int Y = (((X - X1) * (Y2 - Y1) / (X2 – X1) + Y1;
+                    case RenkKanallari.TumKanallar:
+                        R = ((yeni_renk.R - orjinal_aralik_min) * (yeni_aralik_max - yeni_aralik_min) / (orjinal_aralik_max - orjinal_aralik_min)) + yeni_aralik_min;
+                        G = ((yeni_renk.G - orjinal_aralik_min) * (yeni_aralik_max - yeni_aralik_min) / (orjinal_aralik_max - orjinal_aralik_min)) + yeni_aralik_min;
+                        B = ((yeni_renk.B - orjinal_aralik_min) * (yeni_aralik_max - yeni_aralik_min) / (orjinal_aralik_max - orjinal_aralik_min)) + yeni_aralik_min;
+
+                        // Check if the values are in range.
+                        if (R > 255) { R = 255; } else if (R < 0) { R = 0; }
+                        if (G > 255) { G = 255; } else if (G < 0) { G = 0; }
+                        if (B > 255) { B = 255; } else if (B < 0) { B = 0; }
+
+                        DuzenlenecekResim.SetPixel(x, y, Color.FromArgb(R, G, B));
+                        break;
+                }
+            }
+        }
+
+
         return DuzenlenecekResim;
     }
 }
