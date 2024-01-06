@@ -347,7 +347,7 @@
         // Draw the histogram.
         for (int x = 0; x < 256; x++)
         {
-            if (x % 63 == 0)
+            if ((x + 1) % 64 == 0)
             {
                 // Red lines every 64 pixels.
                 HistogramCizimi.DrawLine(OlcekKalemi, (int) (x * OlcekX), 0, (int)(x * OlcekX), HedefKutu.Width);
