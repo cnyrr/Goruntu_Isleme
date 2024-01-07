@@ -201,7 +201,6 @@
             // HaftaDortSecimKutusu
             // 
             HaftaDortSecimKutusu.FormattingEnabled = true;
-            HaftaDortSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev", "4. Ödev", "5. Ödev", "6. Ödev", "7. Ödev", "8. Ödev" });
             HaftaDortSecimKutusu.Location = new Point(146, 235);
             HaftaDortSecimKutusu.Name = "HaftaDortSecimKutusu";
             HaftaDortSecimKutusu.Size = new Size(128, 40);

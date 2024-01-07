@@ -42,10 +42,7 @@ namespace Görüntü_İşleme
             HaftaIkiSecimKutusu.Items.Add(HaftaSecim.Ödev_2);
             HaftaIkiSecimKutusu.Items.Add(HaftaSecim.Ödev_3);
             HaftaIkiSecimKutusu.Items.Add(HaftaSecim.Ödev_4);
-            HaftaIkiSecimKutusu.Items.Add(HaftaSecim.Ödev_5);
-            HaftaIkiSecimKutusu.Items.Add(HaftaSecim.Ödev_6);
-            HaftaIkiSecimKutusu.Items.Add(HaftaSecim.Ödev_7);
-            HaftaIkiSecimKutusu.Items.Add(HaftaSecim.Ödev_8);
+            /* Ödev 5, 6, 7, 8, 9, 10 yok.*/
 
             // 3. Hafta Ödev Tanımlaması:
             HaftaUcSecimKutusu.Items.Add(HaftaSecim.Ödev_1_A);
@@ -60,9 +57,11 @@ namespace Görüntü_İşleme
             HaftaUcSecimKutusu.Items.Add(HaftaSecim.Ödev_12_A);
             HaftaUcSecimKutusu.Items.Add(HaftaSecim.Ödev_13);
             /* Ödev 8 ve 9 yok.*/
-            
 
             // 4. Hafta Ödev Tanımlaması:
+            HaftaDortSecimKutusu.Items.Add(HaftaSecim.Ödev_1);
+            /* Hepsi Yapıldı.*/
+
             // 5. Hafta Ödev Tanımlaması:
             // 6. Hafta Ödev Tanımlaması:
             // 7. Hafta Ödev Tanımlaması:
@@ -90,8 +89,8 @@ namespace Görüntü_İşleme
             HaftaBirSecimKutusu.SelectedIndex = 0;
             HaftaIkiSecimKutusu.SelectedIndex = 0;
             HaftaUcSecimKutusu.SelectedIndex = 0;
-            /*
             HaftaDortSecimKutusu.SelectedIndex = 0;
+            /*
             HaftaBesSecimKutusu.SelectedIndex = 0;
             HaftaAltiSecimKutusu.SelectedIndex = 0;
             HaftaYediSecimKutusu.SelectedIndex = 0;
@@ -147,7 +146,7 @@ namespace Görüntü_İşleme
 
         private void HaftaUcButonu_Click(object sender, EventArgs e)
         {
-            switch (HaftaIkiSecimKutusu.SelectedItem)
+            switch (HaftaUcSecimKutusu.SelectedItem)
             {
                 case HaftaSecim.Ödev_1_A:
                     AltEkraniGoster(new Hafta_3_Odev_1_A());
@@ -191,7 +190,7 @@ namespace Görüntü_İşleme
 
         private void HaftaDortButonu_Click(object sender, EventArgs e)
         {
-            // Not implemented.
+            AltEkraniGoster(new Hafta_4_Odev_1());
             return;
         }
 
