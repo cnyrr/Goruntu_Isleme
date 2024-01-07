@@ -27,6 +27,7 @@ namespace Görüntü_İşleme
             Ödev_10, Ödev_10_A, Ödev_10_B, Ödev_10_C, Ödev_10_D,
             Ödev_11, Ödev_11_A, Ödev_11_B, Ödev_11_C, Ödev_11_D,
             Ödev_12, Ödev_12_A, Ödev_12_B, Ödev_12_C, Ödev_12_D,
+            Ödev_13, Ödev_13_A, Ödev_13_B, Ödev_13_C, Ödev_13_D,
         }
 
         public Ana_Ekran()
@@ -34,6 +35,7 @@ namespace Görüntü_İşleme
             InitializeComponent();
             // 1. Hafta Ödev Tanımlaması:
             HaftaBirSecimKutusu.Items.Add(HaftaSecim.Tek_Parça);
+            /* Hepsi Yapıldı.*/
 
             // 2. Hafta Ödev Tanımlaması:
             HaftaIkiSecimKutusu.Items.Add(HaftaSecim.Ödev_1);
@@ -46,6 +48,20 @@ namespace Görüntü_İşleme
             HaftaIkiSecimKutusu.Items.Add(HaftaSecim.Ödev_8);
 
             // 3. Hafta Ödev Tanımlaması:
+            HaftaUcSecimKutusu.Items.Add(HaftaSecim.Ödev_1_A);
+            HaftaUcSecimKutusu.Items.Add(HaftaSecim.Ödev_1_B);
+            HaftaUcSecimKutusu.Items.Add(HaftaSecim.Ödev_2);
+            HaftaUcSecimKutusu.Items.Add(HaftaSecim.Ödev_3);
+            HaftaUcSecimKutusu.Items.Add(HaftaSecim.Ödev_4);
+            HaftaUcSecimKutusu.Items.Add(HaftaSecim.Ödev_5);
+            HaftaUcSecimKutusu.Items.Add(HaftaSecim.Ödev_6);
+            HaftaUcSecimKutusu.Items.Add(HaftaSecim.Ödev_7);
+            HaftaUcSecimKutusu.Items.Add(HaftaSecim.Ödev_11);
+            HaftaUcSecimKutusu.Items.Add(HaftaSecim.Ödev_12_A);
+            HaftaUcSecimKutusu.Items.Add(HaftaSecim.Ödev_13);
+            /* Ödev 8 ve 9 yok.*/
+            
+
             // 4. Hafta Ödev Tanımlaması:
             // 5. Hafta Ödev Tanımlaması:
             // 6. Hafta Ödev Tanımlaması:
@@ -74,6 +90,7 @@ namespace Görüntü_İşleme
             HaftaBirSecimKutusu.SelectedIndex = 0;
             HaftaIkiSecimKutusu.SelectedIndex = 0;
             HaftaUcSecimKutusu.SelectedIndex = 0;
+            /*
             HaftaDortSecimKutusu.SelectedIndex = 0;
             HaftaBesSecimKutusu.SelectedIndex = 0;
             HaftaAltiSecimKutusu.SelectedIndex = 0;
@@ -83,6 +100,7 @@ namespace Görüntü_İşleme
             HaftaOnSecimKutusu.SelectedIndex = 0;
             HaftaOnBirSecimKutusu.SelectedIndex = 0;
             HaftaOnIkiSecimKutusu.SelectedIndex = 0;
+            */
             return;
         }
 
@@ -109,17 +127,17 @@ namespace Görüntü_İşleme
                     AltEkraniGoster(new Hafta_2_Odev_4());
                     break;
                 case HaftaSecim.Ödev_5:
-                    // AltEkraniGoster(new Hafta_2_Odev_5());
-                    //break;
+                // AltEkraniGoster(new Hafta_2_Odev_5());
+                //break;
                 case HaftaSecim.Ödev_6:
-                    // AltEkraniGoster(new Hafta_2_Odev_6());
-                    //break;
+                // AltEkraniGoster(new Hafta_2_Odev_6());
+                //break;
                 case HaftaSecim.Ödev_7:
-                    // AltEkraniGoster(new Hafta_2_Odev_7());
-                    //break;
+                // AltEkraniGoster(new Hafta_2_Odev_7());
+                //break;
                 case HaftaSecim.Ödev_8:
-                    // AltEkraniGoster(new Hafta_2_Odev_8());
-                    //break;
+                // AltEkraniGoster(new Hafta_2_Odev_8());
+                //break;
                 case HaftaSecim.Ödev_9:
                     // AltEkraniGoster(new Hafta_2_Odev_9());
                     //break;
@@ -131,7 +149,45 @@ namespace Görüntü_İşleme
 
         private void HaftaUcButonu_Click(object sender, EventArgs e)
         {
-            AltEkraniGoster(new Hafta_3_Odev_7());
+            switch (HaftaIkiSecimKutusu.SelectedItem)
+            {
+                case HaftaSecim.Ödev_1_A:
+                    AltEkraniGoster(new Hafta_3_Odev_1_A());
+                    break;
+                case HaftaSecim.Ödev_1_B:
+                    AltEkraniGoster(new Hafta_3_Odev_1_B());
+                    break;
+                case HaftaSecim.Ödev_2:
+                    AltEkraniGoster(new Hafta_3_Odev_2());
+                    break;
+                case HaftaSecim.Ödev_3:
+                    AltEkraniGoster(new Hafta_3_Odev_3());
+                    break;
+                case HaftaSecim.Ödev_4:
+                    AltEkraniGoster(new Hafta_3_Odev_4());
+                    break;
+                case HaftaSecim.Ödev_5:
+                    AltEkraniGoster(new Hafta_3_Odev_5());
+                    break;
+                case HaftaSecim.Ödev_6:
+                    AltEkraniGoster(new Hafta_3_Odev_6());
+                    break;
+                case HaftaSecim.Ödev_7:
+                    AltEkraniGoster(new Hafta_3_Odev_7());
+                    break;
+                case HaftaSecim.Ödev_10:
+                    AltEkraniGoster(new Hafta_3_Odev_10());
+                    break;
+                case HaftaSecim.Ödev_11:
+                    AltEkraniGoster(new Hafta_3_Odev_11());
+                    break;
+                case HaftaSecim.Ödev_12_A:
+                    AltEkraniGoster(new Hafta_3_Odev_12_A());
+                    break;
+                case HaftaSecim.Ödev_13:
+                    //AltEkraniGoster(new Hafta_3_Odev_13());
+                    break;
+            }
             return;
         }
 
