@@ -63,7 +63,18 @@ namespace Görüntü_İşleme
             /* Hepsi Yapıldı.*/
 
             // 5. Hafta Ödev Tanımlaması:
+            HaftaBesSecimKutusu.Items.Add(HaftaSecim.Ödev_1);
+            HaftaBesSecimKutusu.Items.Add(HaftaSecim.Ödev_2);
+            HaftaBesSecimKutusu.Items.Add(HaftaSecim.Ödev_3);
+            HaftaBesSecimKutusu.Items.Add(HaftaSecim.Ödev_4);
+            /* Metin buraya kadar yaptı, gerisi yok.*/
+
+
             // 6. Hafta Ödev Tanımlaması:
+            HaftaAltiSecimKutusu.Items.Add(HaftaSecim.Ödev_1);
+            HaftaAltiSecimKutusu.Items.Add(HaftaSecim.Ödev_2);
+            /* Mustafa buraya kadar yaptı, gerisi yok.*/
+
             // 7. Hafta Ödev Tanımlaması:
             // 8. Hafta Ödev Tanımlaması:
         }
@@ -90,9 +101,9 @@ namespace Görüntü_İşleme
             HaftaIkiSecimKutusu.SelectedIndex = 0;
             HaftaUcSecimKutusu.SelectedIndex = 0;
             HaftaDortSecimKutusu.SelectedIndex = 0;
-            /*
             HaftaBesSecimKutusu.SelectedIndex = 0;
             HaftaAltiSecimKutusu.SelectedIndex = 0;
+            /*
             HaftaYediSecimKutusu.SelectedIndex = 0;
             HaftaSekizSecimKutusu.SelectedIndex = 0;
             HaftaDokuzSecimKutusu.SelectedIndex = 0;
@@ -196,13 +207,37 @@ namespace Görüntü_İşleme
 
         private void HaftaBesButonu_Click(object sender, EventArgs e)
         {
-            //AltEkraniGoster(new Hafta_5_Odev_1());
+            switch (HaftaBesSecimKutusu.SelectedItem)
+            {
+                case HaftaSecim.Ödev_1:
+                    AltEkraniGoster(new Hafta_5_Odev_1());
+                    break;
+                case HaftaSecim.Ödev_2:
+                    AltEkraniGoster(new Hafta_5_Odev_2());
+                    break;
+                case HaftaSecim.Ödev_3:
+                    AltEkraniGoster(new Hafta_5_Odev_3());
+                    break;
+                case HaftaSecim.Ödev_4:
+                    AltEkraniGoster(new Hafta_5_Odev_4());
+                    break;
+            }
             return;
         }
 
         private void HaftaAltiButonu_Click(object sender, EventArgs e)
         {
-            // Not implemented.
+            switch (HaftaAltiSecimKutusu.SelectedItem)
+            {
+                case HaftaSecim.Ödev_1:
+                    MessageBox.Show("UYARI: 3. Ödev entegre edilmiştir.", "UYARI");
+                    AltEkraniGoster(new Hafta_6_Odev_1());
+                    break;
+                case HaftaSecim.Ödev_2:
+                    MessageBox.Show("UYARI: 3. Ödev entegre edilmiştir.", "UYARI");
+                    AltEkraniGoster(new Hafta_6_Odev_2());
+                    break;
+            }
             return;
         }
 

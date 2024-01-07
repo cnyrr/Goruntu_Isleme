@@ -209,7 +209,6 @@
             // HaftaBesSecimKutusu
             // 
             HaftaBesSecimKutusu.FormattingEnabled = true;
-            HaftaBesSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev", "4. Ödev", "5. Ödev", "6. Ödev", "7. Ödev", "8. Ödev" });
             HaftaBesSecimKutusu.Location = new Point(414, 25);
             HaftaBesSecimKutusu.Name = "HaftaBesSecimKutusu";
             HaftaBesSecimKutusu.Size = new Size(128, 40);
@@ -218,7 +217,6 @@
             // HaftaAltiSecimKutusu
             // 
             HaftaAltiSecimKutusu.FormattingEnabled = true;
-            HaftaAltiSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev", "4. Ödev", "5. Ödev", "6. Ödev", "7. Ödev", "8. Ödev" });
             HaftaAltiSecimKutusu.Location = new Point(414, 95);
             HaftaAltiSecimKutusu.Name = "HaftaAltiSecimKutusu";
             HaftaAltiSecimKutusu.Size = new Size(128, 40);
@@ -227,7 +225,6 @@
             // HaftaYediSecimKutusu
             // 
             HaftaYediSecimKutusu.FormattingEnabled = true;
-            HaftaYediSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev", "4. Ödev", "5. Ödev", "6. Ödev", "7. Ödev", "8. Ödev" });
             HaftaYediSecimKutusu.Location = new Point(414, 165);
             HaftaYediSecimKutusu.Name = "HaftaYediSecimKutusu";
             HaftaYediSecimKutusu.Size = new Size(128, 40);
@@ -236,7 +233,6 @@
             // HaftaSekizSecimKutusu
             // 
             HaftaSekizSecimKutusu.FormattingEnabled = true;
-            HaftaSekizSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev", "4. Ödev", "5. Ödev", "6. Ödev", "7. Ödev", "8. Ödev" });
             HaftaSekizSecimKutusu.Location = new Point(414, 235);
             HaftaSekizSecimKutusu.Name = "HaftaSekizSecimKutusu";
             HaftaSekizSecimKutusu.Size = new Size(128, 40);
@@ -245,7 +241,6 @@
             // HaftaDokuzSecimKutusu
             // 
             HaftaDokuzSecimKutusu.FormattingEnabled = true;
-            HaftaDokuzSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev", "4. Ödev", "5. Ödev", "6. Ödev", "7. Ödev", "8. Ödev" });
             HaftaDokuzSecimKutusu.Location = new Point(682, 25);
             HaftaDokuzSecimKutusu.Name = "HaftaDokuzSecimKutusu";
             HaftaDokuzSecimKutusu.Size = new Size(128, 40);
@@ -254,7 +249,6 @@
             // HaftaOnSecimKutusu
             // 
             HaftaOnSecimKutusu.FormattingEnabled = true;
-            HaftaOnSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev", "4. Ödev", "5. Ödev", "6. Ödev", "7. Ödev", "8. Ödev" });
             HaftaOnSecimKutusu.Location = new Point(682, 95);
             HaftaOnSecimKutusu.Name = "HaftaOnSecimKutusu";
             HaftaOnSecimKutusu.Size = new Size(128, 40);
@@ -263,7 +257,6 @@
             // HaftaOnBirSecimKutusu
             // 
             HaftaOnBirSecimKutusu.FormattingEnabled = true;
-            HaftaOnBirSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev", "4. Ödev", "5. Ödev", "6. Ödev", "7. Ödev", "8. Ödev" });
             HaftaOnBirSecimKutusu.Location = new Point(682, 165);
             HaftaOnBirSecimKutusu.Name = "HaftaOnBirSecimKutusu";
             HaftaOnBirSecimKutusu.Size = new Size(128, 40);
@@ -272,7 +265,6 @@
             // HaftaOnIkiSecimKutusu
             // 
             HaftaOnIkiSecimKutusu.FormattingEnabled = true;
-            HaftaOnIkiSecimKutusu.Items.AddRange(new object[] { "1. Ödev", "2. Ödev", "3. Ödev", "4. Ödev", "5. Ödev", "6. Ödev", "7. Ödev", "8. Ödev" });
             HaftaOnIkiSecimKutusu.Location = new Point(682, 235);
             HaftaOnIkiSecimKutusu.Name = "HaftaOnIkiSecimKutusu";
             HaftaOnIkiSecimKutusu.Size = new Size(128, 40);
