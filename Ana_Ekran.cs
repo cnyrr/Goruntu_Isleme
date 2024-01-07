@@ -139,10 +139,8 @@ namespace Görüntü_İşleme
                 // AltEkraniGoster(new Hafta_2_Odev_8());
                 //break;
                 case HaftaSecim.Ödev_9:
-                    // AltEkraniGoster(new Hafta_2_Odev_9());
-                    //break;
-                    MessageBox.Show("Daha eklenmedi.", "Hata!");
-                    break;
+                // AltEkraniGoster(new Hafta_2_Odev_9());
+                break;
             }
             return;
         }
@@ -185,7 +183,7 @@ namespace Görüntü_İşleme
                     AltEkraniGoster(new Hafta_3_Odev_12_A());
                     break;
                 case HaftaSecim.Ödev_13:
-                    //AltEkraniGoster(new Hafta_3_Odev_13());
+                    AltEkraniGoster(new Hafta_3_Odev_13());
                     break;
             }
             return;
