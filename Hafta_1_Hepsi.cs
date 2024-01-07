@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace Görüntü_İşleme
 {
-    public partial class Hafta_1 : Form
+    public partial class Hafta_1_Hepsi : Form
     {
         enum RenkSecimi
         {
@@ -18,7 +18,7 @@ namespace Görüntü_İşleme
             Maviden_Gri,
             Gri
         }
-        public Hafta_1()
+        public Hafta_1_Hepsi()
         {
             InitializeComponent();
             

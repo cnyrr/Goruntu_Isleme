@@ -116,7 +116,7 @@ namespace Görüntü_İşleme
 
         private void HaftaBirButonu_Click(object sender, EventArgs e)
         {
-            AltEkraniGoster(new Hafta_1());
+            AltEkraniGoster(new Hafta_1_Hepsi());
             return;
         }
 

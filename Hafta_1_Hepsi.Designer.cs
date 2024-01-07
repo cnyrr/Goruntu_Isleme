@@ -1,6 +1,6 @@
 ﻿namespace Görüntü_İşleme
 {
-    partial class Hafta_1
+    partial class Hafta_1_Hepsi
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Hafta_1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Hafta_1_Hepsi));
             menuStrip1 = new MenuStrip();
             dosyaToolStripMenuItem = new ToolStripMenuItem();
             ResimSecToolbar = new ToolStripMenuItem();
