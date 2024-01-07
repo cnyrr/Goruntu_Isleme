@@ -67,6 +67,7 @@ namespace Görüntü_İşleme
             HaftaBesSecimKutusu.Items.Add(HaftaSecim.Ödev_2);
             HaftaBesSecimKutusu.Items.Add(HaftaSecim.Ödev_3);
             HaftaBesSecimKutusu.Items.Add(HaftaSecim.Ödev_4);
+            HaftaBesSecimKutusu.Items.Add(HaftaSecim.Ödev_5);
             /* Metin buraya kadar yaptı, gerisi yok.*/
 
 
@@ -75,8 +76,8 @@ namespace Görüntü_İşleme
             HaftaAltiSecimKutusu.Items.Add(HaftaSecim.Ödev_2);
             /* Mustafa buraya kadar yaptı, gerisi yok.*/
 
-            // 7. Hafta Ödev Tanımlaması:
-            // 8. Hafta Ödev Tanımlaması:
+            // 9. Hafta Ödev Tanımlaması:
+            HaftaDokuzSecimKutusu.Items.Add(HaftaSecim.Ödev_8);
         }
 
 
@@ -106,7 +107,9 @@ namespace Görüntü_İşleme
             /*
             HaftaYediSecimKutusu.SelectedIndex = 0;
             HaftaSekizSecimKutusu.SelectedIndex = 0;
+            */
             HaftaDokuzSecimKutusu.SelectedIndex = 0;
+            /*
             HaftaOnSecimKutusu.SelectedIndex = 0;
             HaftaOnBirSecimKutusu.SelectedIndex = 0;
             HaftaOnIkiSecimKutusu.SelectedIndex = 0;
@@ -221,6 +224,10 @@ namespace Görüntü_İşleme
                 case HaftaSecim.Ödev_4:
                     AltEkraniGoster(new Hafta_5_Odev_4());
                     break;
+                case HaftaSecim.Ödev_5:
+                    MessageBox.Show("UYARI: Seçilen noktalar çizilmiyor ama seçiliyor.", "UYARI");
+                    AltEkraniGoster(new Hafta_5_Odev_5());
+                    break;
             }
             return;
         }
@@ -255,7 +262,12 @@ namespace Görüntü_İşleme
 
         private void HaftaDokuzButonu_Click(object sender, EventArgs e)
         {
-            // Not implemented.
+            switch (HaftaDokuzSecimKutusu.SelectedItem)
+            {
+                case HaftaSecim.Ödev_8:
+                    AltEkraniGoster(new Hafta_9_Odev_8());
+                    break;
+            }
             return;
         }
 
